@@ -1,0 +1,49 @@
+<div class="container w-75 bg-light my-5 rounded-3 p-5">
+	<div class="row">
+		<div class="col-5">
+			<h3>Личный кабинет врача</h3>
+			<div class="my-5">
+				<h4></h4>
+				<div class="d-flex align-items-center">
+					<span class="fs-5 fw-bold me-3">Email:</span>
+					<span class="fs-5" id="info__email"></span>
+				</div>
+				<div class="d-flex align-items-center">
+					<span class="fs-5 fw-bold me-3">Имя:</span>
+					<span class="fs-5" id="info__name"></span>
+				</div>
+				<div class="d-flex align-items-center">
+					<span class="fs-5 fw-bold me-3">Пол:</span>
+					<span class="fs-5" id="info__sex">Муж</span>
+				</div>
+			</div>
+			<button type="button" class="btn btn-danger" id="logout">Выйти из аккаунта</button>
+		</div>
+		<div class="col-7">
+			<ul class="nav nav-tabs">
+				<li class="nav-item">
+					<a class="nav-link text-dark active" aria-current="page" href="#">Мои пациенты</a>
+				</li>
+				<li class="nav-item text-dark">
+					<a class="nav-link text-dark" aria-current="page" href="#">Опросы</a>
+				</li>
+			</ul>
+			<div class="container rounded-3 p-4 bg-white shadow-sm">
+				<div id="patients-section">
+					<div class="row w-100">
+						<div class="col-9">
+							<select id="add_patient_list" class="form-select form-select-lg mb-3" aria-label="Large select example">
+								<option value="0" disabled selected>Выбрать пациента</option>
+							</select>
+						</div>
+						<div class="col-3">
+							<button disabled type="button" class="btn btn-success mb-3 h-75 w-100" id="add_patient_btn">
+								Добавить
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
