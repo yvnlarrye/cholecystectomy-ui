@@ -201,7 +201,7 @@
               <input required min="0" type="number" class="form-control" id="koykoDays">
             </div>
             <div class="col-4">
-              <label for="exampleInputEmail1" class="form-label">Описание макропрепарата</label>
+              <label for="descriptionOfMacropreparation" class="form-label">Описание макропрепарата</label>
               <select id="descriptionOfMacropreparation" class="form-select">
                 <option selected>количество камней  -1</option>
                 <option>группа камней</option>
@@ -216,8 +216,8 @@
 
           <div class="row mb-3 bg-light rounded-5 p-4">
             <div class="col-4">
-              <label for="HeredityIsBurdenedWithCholelithiasis" class="form-label">Наследственность отягчена по ЖКБ</label>
-              <select id="HeredityIsBurdenedWithCholelithiasis" class="form-select">
+              <label for="heredityIsBurdenedWithCholelithiasis" class="form-label">Наследственность отягчена по ЖКБ</label>
+              <select id="heredityIsBurdenedWithCholelithiasis" class="form-select">
                 <option selected>Нет</option>
                 <option>Да</option>
               </select>
@@ -227,32 +227,35 @@
           <h3 class="mt-3">Клиническая часть</h3>
           <div class="row mb-3 bg-light rounded-5 p-4">
             <div class="col-3">
-              <label for="exampleInputEmail1" class="form-label">Боль</label>
-              <select class="form-select">
+              <label for="pain" class="form-label">Боль</label>
+              <select id="pain" class="form-select">
                 <option selected>Нет</option>
                 <option>Да</option>
               </select>
             </div>
             <div class="col-3">
-              <label for="exampleInputEmail1" class="form-label">Локализация</label>
-              <select class="form-select">
-                <option selected>Эпигастрий</option>
+              <label for="localisation" class="form-label">Локализация</label>
+              <select disabled id="localisation" class="form-select">
+                <option selected disabled></option>
+                <option>Эпигастрий</option>
                 <option>Правое подреберье</option>
                 <option>Левое подреберье</option>
               </select>
             </div>
             <div class="col-3">
-              <label for="exampleInputEmail1" class="form-label">Иррадиация</label>
-              <select class="form-select">
-                <option selected>Нет</option>
+              <label for="irradiation" class="form-label">Иррадиация</label>
+              <select disabled id="irradiation" class="form-select">
+                <option selected disabled></option>
+                <option>Нет</option>
                 <option>В спину</option>
                 <option>Под правую лопатку</option>
               </select>
             </div>
             <div class="col-3">
-              <label for="exampleInputEmail1" class="form-label">Длительность</label>
-              <select class="form-select">
-                <option selected>Кратковременные</option>
+              <label for="durance" class="form-label">Длительность</label>
+              <select disabled id="durance" class="form-select">
+                <option selected disabled></option>
+                <option>Кратковременные</option>
                 <option>До 30 минут</option>
                 <option>Более 30 минут</option>
               </select>
@@ -261,166 +264,140 @@
 
           <div class="row mb-3 bg-light rounded-5 p-4">
             <div class="col-4">
-              <label for="exampleInputEmail1" class="form-label">Приступы желчной колики</label>
-              <select class="form-select">
-                <option selected>Да</option>
-                <option>Нет</option>
+              <label for="attacksOfBiliaryColic" class="form-label">Приступы желчной колики</label>
+              <select id="attacksOfBiliaryColic" class="form-select">
+                <option selected>Нет</option>
+                <option>Да</option>
               </select>
             </div>
             <div class="col-4">
-              <label for="exampleInputEmail1" class="form-label">Дискомфорт в эпигастрии</label>
-              <select class="form-select">
-                <option selected>Да</option>
-                <option>Нет</option>
+              <label for="epigastricDiscomfort" class="form-label">Дискомфорт в эпигастрии</label>
+              <select id="epigastricDiscomfort" class="form-select">
+                <option selected>Нет</option>
+                <option>Да</option>
               </select>
             </div>
             <div class="col-4">
-              <label for="exampleInputEmail1" class="form-label">Нарушение переносимости жирной пищи</label>
-              <select class="form-select">
-                <option selected>Да</option>
-                <option>Нет</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="row mb-3 bg-light rounded-5 p-4">
-            <div class="col-4">
-              <label for="exampleInputEmail1" class="form-label">Тошнота</label>
-              <select class="form-select">
-                <option selected>Да</option>
-                <option>Нет</option>
-              </select>
-            </div>
-            <div class="col-4">
-              <label for="exampleInputEmail1" class="form-label">Рвота</label>
-              <select class="form-select">
-                <option selected>Да</option>
-                <option>Нет</option>
-              </select>
-            </div>
-            <div class="col-4">
-              <label for="exampleInputEmail1" class="form-label">Горечь во рту</label>
-              <select class="form-select">
-                <option selected>Да</option>
-                <option>Нет</option>
+              <label for="impairedToleranceToFattyFoods" class="form-label">Нарушение переносимости жирной пищи</label>
+              <select id="impairedToleranceToFattyFoods" class="form-select">
+                <option selected>Нет</option>
+                <option>Да</option>
               </select>
             </div>
           </div>
 
           <div class="row mb-3 bg-light rounded-5 p-4">
             <div class="col-4">
-              <label for="exampleInputEmail1" class="form-label">Запор</label>
-              <select class="form-select">
-                <option selected>Да</option>
-                <option>Нет</option>
+              <label for="nausea" class="form-label">Тошнота</label>
+              <select id="nausea" class="form-select">
+                <option selected>Нет</option>
+                <option>Да</option>
               </select>
             </div>
             <div class="col-4">
-              <label for="exampleInputEmail1" class="form-label">Диарея</label>
-              <select class="form-select">
-                <option selected>Да</option>
-                <option>Нет</option>
+              <label for="vomiting" class="form-label">Рвота</label>
+              <select id="vomiting" class="form-select">
+                <option selected>Нет</option>
+                <option>Да</option>
               </select>
             </div>
             <div class="col-4">
-              <label for="exampleInputEmail1" class="form-label">Изжога</label>
-              <select class="form-select">
-                <option selected>Да</option>
-                <option>Нет</option>
+              <label for="bitternessInTheMouth" class="form-label">Горечь во рту</label>
+              <select id="bitternessInTheMouth" class="form-select">
+                <option selected>Нет</option>
+                <option>Да</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row mb-3 bg-light rounded-5 p-4">
+            <div class="col-4">
+              <label for="constipation" class="form-label">Запор</label>
+              <select id="constipation" class="form-select">
+                <option selected>Нет</option>
+                <option>Да</option>
+              </select>
+            </div>
+            <div class="col-4">
+              <label for="diarrhea" class="form-label">Диарея</label>
+              <select id="diarrhea" class="form-select">
+                <option selected>Нет</option>
+                <option>Да</option>
+              </select>
+            </div>
+            <div class="col-4">
+              <label for="heartburn" class="form-label">Изжога</label>
+              <select id="heartburn" class="form-select">
+                <option selected>Нет</option>
+                <option>Да</option>
               </select>
             </div>
           </div>
 
           <div class="row mb-3 bg-light rounded-5 p-4">
             <div class="col">
-              <label for="exampleInputEmail1" class="form-label">Нарушение сна</label>
-              <select class="form-select">
-                <option selected>Да</option>
-                <option>Нет</option>
+              <label for="sleepDisturbance" class="form-label">Нарушение сна</label>
+              <select id="sleepDisturbance" class="form-select">
+                <option selected>Нет</option>
+                <option>Да</option>
               </select>
             </div>
             <div class="col">
-              <label for="exampleInputEmail1" class="form-label">Лихорадка</label>
-              <select class="form-select">
-                <option selected>Да</option>
-                <option>Нет</option>
+              <label for="fever" class="form-label">Лихорадка</label>
+              <select id="fever" class="form-select">
+                <option selected>Нет</option>
+                <option>Да</option>
               </select>
-            </div>
-          </div>
-
-          <div class="row mb-3 bg-light rounded-5 p-4">
-            <div class="col-4">
-              <label for="exampleInputEmail1" class="form-label">Наличие сопутствующих заболеваний</label>
-              <select class="form-select">
-                <option selected>Да</option>
-                <option>Нет</option>
-              </select>
-            </div>
-            <div class="col-4">
-              <label for="exampleInputEmail1" class="form-label">Заболевания</label>
-              <select class="form-select">
-                <option selected>Артериальная гипертония</option>
-                <option>Язвенная болезнь желудка и двенадцатиперстной  кишки</option>
-                <option>Мочекаменная болезнь</option>
-                <option>Ишемическая болезнь сердца</option>
-                <option>Хроническая обструктивная болезнь легких</option>
-                <option>Сахарный диабет II типа</option>
-                <option>Другое</option>
-              </select>
-            </div>
-            <div class="col-4">
-              <label for="exampleInputEmail1" class="form-label">Другое</label>
-              <textarea required rows="1" class="form-control" id="floatingTextarea"></textarea>
             </div>
           </div>
 
           <h3 class="mt-3">Данные лабораторно – инструментальных методов исследований</h3>
           <div class="row mb-3 bg-light rounded-5 p-4">
             <div class="col-4">
-              <label for="exampleInputEmail1" class="form-label">Рентгенологическое исследование грудной клетки</label>
-              <select class="form-select">
+              <label for="chestXray" class="form-label">Рентгенологическое исследование грудной клетки</label>
+              <select id="chestXray" class="form-select">
                 <option selected>Нет</option>
                 <option>Да</option>
               </select>
             </div>
             <div class="col-4">
-              <label for="exampleInputEmail1" class="form-label">Имеются ли клинически значимые отклонения</label>
-              <select class="form-select">
+              <label for="presenceOfChestXrayDeviations" class="form-label">Имеются ли клинически значимые отклонения</label>
+              <select disabled id="presenceOfChestXrayDeviations" class="form-select">
                 <option selected>Нет</option>
                 <option>Да</option>
               </select>
             </div>
             <div class="col-4">
-              <label for="exampleInputEmail1" class="form-label">Отклонения</label>
-              <textarea required rows="1" class="form-control" id="floatingTextarea"></textarea>
+              <label for="chestXrayDeviations" class="form-label">Отклонения</label>
+              <textarea disabled id="chestXrayDeviations" required rows="1" class="form-control"></textarea>
             </div>
           </div>
 
           <div class="row mb-3 bg-light rounded-5 p-4">
             <div class="col-4">
-              <label for="exampleInputEmail1" class="form-label">Электрокардиография</label>
-              <select class="form-select">
+              <label for="electrocardiography" class="form-label">Электрокардиография</label>
+              <select id="electrocardiography" class="form-select">
                 <option selected>Нет</option>
                 <option>Да</option>
               </select>
             </div>
             <div class="col-4">
-              <label for="exampleInputEmail1" class="form-label">Имеются ли клинически значимые отклонения</label>
-              <select class="form-select">
+              <label for="presenseElectrocardiographyDeviations" class="form-label">Имеются ли клинически значимые отклонения</label>
+              <select disabled id="presenseElectrocardiographyDeviations" class="form-select">
                 <option selected>Нет</option>
                 <option>Да</option>
               </select>
             </div>
             <div class="col-4">
-              <label for="exampleInputEmail1" class="form-label">Отклонения</label>
-              <textarea required rows="1" class="form-control" id="floatingTextarea"></textarea>
+              <label for="electrocardiographyDeviations" class="form-label">Отклонения</label>
+              <textarea disabled id="electrocardiographyDeviations" required rows="1" class="form-control"></textarea>
             </div>
           </div>
 
           <div class="row mb-3 bg-light rounded-5 p-4">
             <div class="col-4">
-              <label for="exampleInputEmail1" class="form-label">Общий анализ крови</label>
-              <select class="form-select">
+              <label for="generalBloodAnalysis" class="form-label">Общий анализ крови</label>
+              <select id="generalBloodAnalysis" class="form-select">
                 <option selected>Нет</option>
                 <option>Да</option>
               </select>
@@ -429,20 +406,20 @@
             <div class="col-8">
               <div class="row">
                 <div class="col-3">
-                  <label for="exampleInputEmail1" class="form-label">Гемоглобин</label>
-                  <input required type="text" class="form-control" id="exampleInputEmail1" >
+                  <label for="hemoglobin" class="form-label">Гемоглобин</label>
+                  <input disabled required type="text" class="form-control" id="hemoglobin">
                 </div>
                 <div class="col-3">
-                  <label for="exampleInputEmail1" class="form-label">Эритроциты</label>
-                  <input required type="text" class="form-control" id="exampleInputEmail1" >
+                  <label for="redBloodCells" class="form-label">Эритроциты</label>
+                  <input disabled required type="text" class="form-control" id="redBloodCells" >
                 </div>
                 <div class="col-3">
-                  <label for="exampleInputEmail1" class="form-label">Лейкоциты</label>
-                  <input required type="text" class="form-control" id="exampleInputEmail1" >
+                  <label for="leukocytes" class="form-label">Лейкоциты</label>
+                  <input disabled required type="text" class="form-control" id="leukocytes" >
                 </div>
                 <div class="col-3">
-                  <label for="exampleInputEmail1" class="form-label">СОЭ</label>
-                  <input required type="text" class="form-control" id="exampleInputEmail1" >
+                  <label for="erythrocyteSedimentationRate" class="form-label">СОЭ</label>
+                  <input disabled required type="text" class="form-control" id="erythrocyteSedimentationRate" >
                 </div>
               </div>
             </div>
@@ -450,22 +427,22 @@
 
           <div class="row mb-3 bg-light rounded-5 p-4">
             <div class="col-4">
-              <label for="exampleInputEmail1" class="form-label">Общий анализ мочи</label>
-              <select class="form-select">
+              <label for="generalUrineAnalysis" class="form-label">Общий анализ мочи</label>
+              <select id="generalUrineAnalysis" class="form-select">
                 <option selected>Нет</option>
                 <option>Да</option>
               </select>
             </div>
             <div class="col-4">
-              <label for="exampleInputEmail1" class="form-label">Имеются ли клинически значимые отклонения</label>
-              <select class="form-select">
+              <label for="presenseGeneralUrineAnalysisDeviations" class="form-label">Имеются ли клинически значимые отклонения</label>
+              <select disabled id="presenseGeneralUrineAnalysisDeviations" class="form-select">
                 <option selected>Нет</option>
                 <option>Да</option>
               </select>
             </div>
             <div class="col-4">
-              <label for="exampleInputEmail1" class="form-label">Отклонения</label>
-              <textarea required rows="1" class="form-control" id="floatingTextarea"></textarea>
+              <label for="generalUrineAnalysisDeviations" class="form-label">Отклонения</label>
+              <textarea disabled id="generalUrineAnalysisDeviations" required rows="1" class="form-control"></textarea>
             </div>
           </div>
 
@@ -490,50 +467,50 @@
 
           <div class="row mb-3 bg-light rounded-5 p-4">
             <div class="col-4">
-              <label for="exampleInputEmail1" class="form-label">Биохимические исследования</label>
-              <select class="form-select">
+              <label for="biochemicalStudies" class="form-label">Биохимические исследования</label>
+              <select id="biochemicalStudies" class="form-select">
                 <option selected>Нет</option>
                 <option>Да</option>
               </select>
             </div>
           </div>
 
-          <div class="row mb-3 bg-light rounded-5 p-4">
+          <div class="row mb-3 bg-light rounded-5 p-4" id="biochemicalStudiesIndicators" hidden>
             <div class="col-4">
-              <label for="exampleInputEmail1" class="form-label">Холестерин</label>
-              <input required type="text" class="form-control" id="exampleInputEmail1">
+              <label for="cholesterol" class="form-label">Холестерин</label>
+              <input required type="text" class="form-control" id="cholesterol">
             </div>
             <div class="col-4">
-              <label for="exampleInputEmail1" class="form-label">Билирубин общий</label>
-              <input required type="text" class="form-control" id="exampleInputEmail1">
+              <label for="totalBilirubin" class="form-label">Билирубин общий</label>
+              <input required type="text" class="form-control" id="totalBilirubin">
             </div>
             <div class="col-4">
-              <label for="exampleInputEmail1" class="form-label">Билирубин прямой</label>
-              <input required type="text" class="form-control" id="exampleInputEmail1">
+              <label for="directBilirubin" class="form-label">Билирубин прямой</label>
+              <input required type="text" class="form-control" id="directBilirubin">
             </div>
             <div class="col-4">
-              <label for="exampleInputEmail1" class="form-label">Билирубин непрямой</label>
-              <input required type="text" class="form-control" id="exampleInputEmail1">
+              <label for="indirectBilirubin" class="form-label">Билирубин непрямой</label>
+              <input required type="text" class="form-control" id="indirectBilirubin">
             </div>
             <div class="col-4">
-              <label for="exampleInputEmail1" class="form-label">АЛТ</label>
-              <input required type="text" class="form-control" id="exampleInputEmail1">
+              <label for="alt" class="form-label">АЛТ</label>
+              <input required type="text" class="form-control" id="alt">
             </div>
             <div class="col-4">
-              <label for="exampleInputEmail1" class="form-label">АСТ</label>
-              <input required type="text" class="form-control" id="exampleInputEmail1">
+              <label for="ast" class="form-label">АСТ</label>
+              <input required type="text" class="form-control" id="ast">
             </div>
             <div class="col-4">
-              <label for="exampleInputEmail1" class="form-label">Щелочная фосфатаза (ЩФ)</label>
-              <input required type="text" class="form-control" id="exampleInputEmail1">
+              <label for="alkalinePhosphatase" class="form-label">Щелочная фосфатаза (ЩФ)</label>
+              <input required type="text" class="form-control" id="alkalinePhosphatase">
             </div>
             <div class="col-4">
-              <label for="exampleInputEmail1" class="form-label">Гамма-глютамилтрансфераза (ГГТП)</label>
-              <input required type="text" class="form-control" id="exampleInputEmail1">
+              <label for="gammaGlutamylTransferase" class="form-label">Гамма-глютамилтрансфераза (ГГТП)</label>
+              <input required type="text" class="form-control" id="gammaGlutamylTransferase">
             </div>
             <div class="col-4">
-              <label for="exampleInputEmail1" class="form-label">Глюкоза сыворотки крови</label>
-              <input required type="text" class="form-control" id="exampleInputEmail1">
+              <label for="serumGlucose" class="form-label">Глюкоза сыворотки крови</label>
+              <input required type="text" class="form-control" id="serumGlucose">
             </div>
           </div>
 

@@ -1,6 +1,6 @@
 import { getUserInfo } from "./utils.js"
 
-const notAnswer = "Нет"
+const noAnswer = "Нет"
 const yesAnswer = "Да"
 const otherAnswer = "Другое"
 
@@ -21,11 +21,49 @@ const otherComplicationsChronicEndometritisInput = document.getElementById("othe
 const descriptionOfMacropreparationInput = document.getElementById("descriptionOfMacropreparation")
 const otherDescriptionOfMacropreparationInput = document.getElementById("otherDescriptionOfMacropreparation")
 
+const painInput = document.getElementById("pain")
+const localisationInput = document.getElementById("localisation")
+const irradiationInput = document.getElementById("irradiation")
+const duranceInput = document.getElementById("durance")
+
+const chestXrayInput = document.getElementById("chestXray")
+const presenceOfChestXrayDeviationsInput = document.getElementById("presenceOfChestXrayDeviations")
+const chestXrayDeviationsInput = document.getElementById("chestXrayDeviations")
+
+const electrocardiographyInput = document.getElementById("electrocardiography")
+const presenseElectrocardiographyDeviationsInput = document.getElementById("presenseElectrocardiographyDeviations")
+const electrocardiographyDeviationsInput = document.getElementById("electrocardiographyDeviations")
+
+const generalBloodAnalysisInput = document.getElementById("generalBloodAnalysis")
+const hemoglobinInput = document.getElementById("hemoglobin")
+const redBloodCellsInput = document.getElementById("redBloodCells")
+const leukocytesInput = document.getElementById("leukocytes")
+const erythrocyteSedimentationRateInput = document.getElementById("erythrocyteSedimentationRate")
+
+const generalUrineAnalysisInput = document.getElementById("generalUrineAnalysis")
+const presenseGeneralUrineAnalysisDeviationsInput = document.getElementById("presenseGeneralUrineAnalysisDeviations")
+const generalUrineAnalysisDeviationsInput = document.getElementById("generalUrineAnalysisDeviations")
+
+const biochemicalStudiesInput = document.getElementById("biochemicalStudies")
+const biochemicalStudiesIndicatorsInput = document.getElementById("biochemicalStudiesIndicators")
+
+
+const cholesterolInput = document.getElementById("cholesterol")
+const totalBilirubinInput = document.getElementById("totalBilirubin")
+const directBilirubinInput = document.getElementById("directBilirubin")
+const indirectBilirubinInput = document.getElementById("indirectBilirubin")
+const altInput = document.getElementById("alt")
+const astInput = document.getElementById("ast")
+const alkalinePhosphataseInput = document.getElementById("alkalinePhosphatase")
+const gammaGlutamylTransferaseInput = document.getElementById("gammaGlutamylTransferase")
+const serumGlucoseInput = document.getElementById("serumGlucose")
+
+
 
 function initPoll() {
     isDeadInput.addEventListener("change", () => {
         deathDateInput.disabled = !deathDateInput.disabled
-        if (isDeadInput.value == notAnswer) {
+        if (isDeadInput.value == noAnswer) {
             deathDateInput.value = null
         }
     })
@@ -36,7 +74,7 @@ function initPoll() {
 
     presenceOfConcomitantDiseasesInput.addEventListener("change", () => {
         concomitantDiseasesInput.disabled = !concomitantDiseasesInput.disabled
-        if (presenceOfConcomitantDiseasesInput.value == notAnswer) {
+        if (presenceOfConcomitantDiseasesInput.value == noAnswer) {
             concomitantDiseasesInput.value = null
         }
     })
@@ -84,6 +122,99 @@ function initPoll() {
         }
     })
 
+    painInput.addEventListener("change", () => {
+        localisationInput.disabled = !localisationInput.disabled
+        irradiationInput.disabled = !irradiationInput.disabled
+        duranceInput.disabled = !duranceInput.disabled
+
+        if (presenceOfConcomitantDiseasesInput.value == noAnswer) {
+            localisationInput.value = null
+            irradiationInput.value = null
+            duranceInput.value = null
+        }
+    })
+
+    chestXrayInput.addEventListener("change", () => {
+        presenceOfChestXrayDeviationsInput.disabled = !presenceOfChestXrayDeviationsInput.disabled
+
+        if (chestXrayInput.value == noAnswer) {
+            presenceOfChestXrayDeviationsInput.value = noAnswer
+            chestXrayDeviationsInput.value = null
+            chestXrayDeviationsInput.disabled = true
+        }
+    })
+
+    presenceOfChestXrayDeviationsInput.addEventListener("change", () => {
+        chestXrayDeviationsInput.disabled = !chestXrayDeviationsInput.disabled
+        if (presenceOfChestXrayDeviationsInput.value == noAnswer) {
+            chestXrayDeviationsInput.value = null
+        }
+    })
+
+    electrocardiographyInput.addEventListener("change", () => {
+        presenseElectrocardiographyDeviationsInput.disabled = !presenseElectrocardiographyDeviationsInput.disabled
+
+        if (electrocardiographyInput.value == noAnswer) {
+            presenseElectrocardiographyDeviationsInput.value = noAnswer
+            electrocardiographyDeviationsInput.value = null
+            electrocardiographyDeviationsInput.disabled = true
+        }
+    })
+
+    presenseElectrocardiographyDeviationsInput.addEventListener("change", () => {
+        electrocardiographyDeviationsInput.disabled = !electrocardiographyDeviationsInput.disabled
+        if (presenseElectrocardiographyDeviationsInput.value == noAnswer) {
+            electrocardiographyDeviationsInput.value = null
+        }
+    })
+
+    generalBloodAnalysisInput.addEventListener("change", () => {
+        hemoglobinInput.disabled = !hemoglobinInput.disabled
+        redBloodCellsInput.disabled = !redBloodCellsInput.disabled
+        leukocytesInput.disabled = !leukocytesInput.disabled
+        erythrocyteSedimentationRateInput.disabled = !erythrocyteSedimentationRateInput.disabled
+
+        if (generalBloodAnalysisInput.value == noAnswer) {
+            hemoglobinInput.value = null
+            redBloodCellsInput.value = null
+            leukocytesInput.value = null
+            erythrocyteSedimentationRateInput.value = null
+        }
+    })
+
+    generalUrineAnalysisInput.addEventListener("change", () => {
+        presenseGeneralUrineAnalysisDeviationsInput.disabled = !presenseGeneralUrineAnalysisDeviationsInput.disabled
+
+        if (generalUrineAnalysisInput.value == noAnswer) {
+            presenseGeneralUrineAnalysisDeviationsInput.value = noAnswer
+            generalUrineAnalysisDeviationsInput.value = null
+            generalUrineAnalysisDeviationsInput.disabled = true
+        }
+    })
+
+    presenseGeneralUrineAnalysisDeviationsInput.addEventListener("change", () => {
+        generalUrineAnalysisDeviationsInput.disabled = !generalUrineAnalysisDeviationsInput.disabled
+        if (presenseGeneralUrineAnalysisDeviationsInput.value == noAnswer) {
+            generalUrineAnalysisDeviationsInput.value = null
+        }
+    })
+
+    biochemicalStudiesInput.addEventListener("change", () => {
+        biochemicalStudiesIndicatorsInput.hidden = !biochemicalStudiesIndicatorsInput.hidden
+
+        cholesterolInput.value = null
+        totalBilirubinInput.value = null
+        directBilirubinInput.value = null
+        indirectBilirubinInput.value = null
+        altInput.value = null
+        astInput.value = null
+        alkalinePhosphataseInput.value = null
+        gammaGlutamylTransferaseInput.value = null
+        serumGlucoseInput.value = null
+
+    })
+
+
 }
 
 function getAge(birthDateStr) {
@@ -103,6 +234,7 @@ async function getPollData() {
     const sex = (patientInfo.sex == "MALE") ? "Мужской" : "Женский"
     const birthDate = document.getElementById("birthDateInput").value
     const isDead = document.getElementById("isDead").value
+    const deathDate = deathDateInput.value
     const age = getAge(birthDate)
     const address = document.getElementById("address").value
     const phoneNumber = document.getElementById("phoneNumber").value
@@ -120,12 +252,74 @@ async function getPollData() {
     const diseaseCourse = document.getElementById("diseaseCourse").value
     const surgeryType = document.getElementById("surgeryType").value
     const cholelithiasisOrder = document.getElementById("cholelithiasisOrder").value
-    
+
     const emergencyReason = emergencyReasonInput.value
     if (otherEmergencyReasonInput.value) {
         emergencyReason = otherEmergencyReasonInput.value
     }
 
+    const presenceOfComplicationsChronicEndometritis = presenceOfComplicationsChronicEndometritisInput.value
+    const complicationsChronicEndometritis = complicationsChronicEndometritis.value
+    if (otherComplicationsChronicEndometritisInput.value) {
+        complicationsChronicEndometritis = otherComplicationsChronicEndometritisInput.value
+    }
+
+    const koykoDays = document.getElementById("koykoDays").value
+
+    const descriptionOfMacropreparation = descriptionOfMacropreparationInput.value
+    if (otherDescriptionOfMacropreparationInput.value) {
+        descriptionOfMacropreparation = otherDescriptionOfMacropreparationInput.value
+    }
+
+    const heredityIsBurdenedWithCholelithiasis = document.getElementById("heredityIsBurdenedWithCholelithiasis").value
+
+    const pain = painInput.value
+    const localisation = localisationInput.value
+    const irradiation = irradiationInput.value
+    const durance = duranceInput.value
+
+    const attacksOfBiliaryColic = document.getElementById("attacksOfBiliaryColic").value
+    const epigastricDiscomfort = document.getElementById("epigastricDiscomfort").value
+    const impairedToleranceToFattyFoods = document.getElementById("impairedToleranceToFattyFoods").value
+    const nausea = document.getElementById("nausea").value
+    const vomiting = document.getElementById("vomiting").value
+    const bitternessInTheMouth = document.getElementById("bitternessInTheMouth").value
+    const constipation = document.getElementById("constipation").value
+    const diarrhea = document.getElementById("diarrhea").value
+    const heartburn = document.getElementById("heartburn").value
+    const sleepDisturbance = document.getElementById("sleepDisturbance").value
+    const fever = document.getElementById("fever").value
+
+    const chestXray = chestXrayInput.value
+    const chestXrayDeviations = chestXrayDeviationsInput.value
+    const electrocardiography = electrocardiographyInput.value
+    const electrocardiographyDeviations = electrocardiographyDeviationsInput.value
+
+    const generalBloodAnalysis = document.getElementById("generalBloodAnalysis").value
+    const hemoglobin = document.getElementById("hemoglobin").value
+    const redBloodCells = document.getElementById("redBloodCells").value
+    const leukocytes = document.getElementById("leukocytes").value
+    const erythrocyteSedimentationRate = document.getElementById("erythrocyteSedimentationRate").value
+
+    const generalUrineAnalysis = generalUrineAnalysisInput.value
+    const generalUrineAnalysisDeviations = generalUrineAnalysisDeviationsInput.value
+
+    const bloodType = document.getElementById("bloodType").value
+    const rhFactor = document.getElementById("rhFactor").value
+
+    const biochemicalStudies = biochemicalStudiesInput.value
+    const cholesterol = cholesterolInput.value
+    const totalBilirubin = totalBilirubinInput.value
+    const directBilirubin = directBilirubinInput.value
+    const indirectBilirubin = indirectBilirubinInput.value
+    const alt = altInput.value
+    const ast = astInput.value
+    const alkalinePhosphatase = alkalinePhosphataseInput.value
+    const gammaGlutamylTransferase = gammaGlutamylTransferaseInput.value
+    const serumGlucose = serumGlucoseInput.value
+
+    const fibrogastroduodenoscopy = document.getElementById("fibrogastroduodenoscopy").value
+    const ultrasoundExaminationOfTheAbdominalOrgans = document.getElementById("ultrasoundExaminationOfTheAbdominalOrgans").value
 
 }
 
