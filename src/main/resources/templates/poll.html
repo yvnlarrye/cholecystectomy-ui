@@ -17,7 +17,7 @@
     <main>
       <div class="container w-75 p-5">
         <h1 class="text-center">Опрос</h1>
-        <form class="rounded-3 shadow p-5 mt-3">
+        <div class="rounded-3 shadow p-5 mt-3">
           <h3>Общая информация</h3>
           <div class="row mb-3 bg-light rounded-5 p-4">
             <div class="col-4">
@@ -448,8 +448,8 @@
 
           <div class="row mb-3 bg-light rounded-5 p-4">
             <div class="col-4">
-              <label for="exampleInputEmail1" class="form-label">Группа крови</label>
-              <select class="form-select">
+              <label for="bloodType" class="form-label">Группа крови</label>
+              <select id="bloodType" class="form-select">
                 <option selected>О(I)</option>
                 <option>А(II)</option>
                 <option>B(III)</option>
@@ -457,8 +457,8 @@
               </select>
             </div>
             <div class="col-4">
-              <label for="exampleInputEmail1" class="form-label">Резус фактор</label>
-              <select class="form-select">
+              <label for="rhFactor" class="form-label">Резус фактор</label>
+              <select id="rhFactor" class="form-select">
                 <option selected>+</option>
                 <option>-</option>
               </select>
@@ -516,23 +516,23 @@
 
           <div class="row mb-3 bg-light rounded-5 p-4">
             <div class="col-6">
-              <label for="exampleInputEmail1" class="form-label">Фиброгастродуоденоскопия (наличие или отсутствие желчи в просвете двенадцатиперстной кишки, форму и состояние большого дуоденального сосочка, состояние слизистой оболочки двенадцатиперстной кишки) </label>
-              <select class="form-select">
+              <label for="fibrogastroduodenoscopy" class="form-label">Фиброгастродуоденоскопия (наличие или отсутствие желчи в просвете двенадцатиперстной кишки, форму и состояние большого дуоденального сосочка, состояние слизистой оболочки двенадцатиперстной кишки) </label>
+              <select id="fibrogastroduodenoscopy" class="form-select">
                 <option selected>Нет</option>
                 <option>Да</option>
               </select>
             </div>
             <div class="col-6">
-              <label for="exampleInputEmail1" class="form-label">Ультразвуковое исследование органов брюшной полости (наличие конкрементов в жёлчном пузыре и их размеры, наличие конкрементов в общем жёлчном протоке или косвенные признаки холедохолитиаза, степень воспалительно-инфильтративных изменений и толщина стенки жёлчного пузыря, диаметр общего печёночного, общего жёлчного и пузырного протоков, расположение и размеры жёлчного пузыря, форма, положение, контуры и размеры печени и поджелудочной железы)</label>
-              <select class="form-select">
+              <label for="ultrasoundExaminationOfTheAbdominalOrgans" class="form-label">Ультразвуковое исследование органов брюшной полости (наличие конкрементов в жёлчном пузыре и их размеры, наличие конкрементов в общем жёлчном протоке или косвенные признаки холедохолитиаза, степень воспалительно-инфильтративных изменений и толщина стенки жёлчного пузыря, диаметр общего печёночного, общего жёлчного и пузырного протоков, расположение и размеры жёлчного пузыря, форма, положение, контуры и размеры печени и поджелудочной железы)</label>
+              <select id="ultrasoundExaminationOfTheAbdominalOrgans" class="form-select">
                 <option selected>Нет</option>
                 <option>Да</option>
               </select>
             </div>
           </div>
          
-          <button type="submit" class="btn btn-success">Отправить</button>
-        </form>
+          <button class="btn btn-success" id="complete-btn">Отправить</button>
+        </div>
       </div>
     </main>
 

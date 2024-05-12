@@ -58,6 +58,8 @@ const alkalinePhosphataseInput = document.getElementById("alkalinePhosphatase")
 const gammaGlutamylTransferaseInput = document.getElementById("gammaGlutamylTransferase")
 const serumGlucoseInput = document.getElementById("serumGlucose")
 
+const completeBtn = document.getElementById("complete-btn")
+
 
 
 function initPoll() {
@@ -214,6 +216,9 @@ function initPoll() {
 
     })
 
+    completeBtn.addEventListener("click", async () => {
+        await completePoll()
+    })
 
 }
 
@@ -225,102 +230,134 @@ function getAge(birthDateStr) {
 }
 
 
-async function getPollData() {
-    const patientId = patientInfo.id
+function getPollData() {
     const fullName = patientInfo.name.split(" ")
-    const firstName = fullName[1]
-    const secondName = fullName[0]
-    const fathersName = fullName[2]
-    const sex = (patientInfo.sex == "MALE") ? "Мужской" : "Женский"
-    const birthDate = document.getElementById("birthDateInput").value
-    const isDead = document.getElementById("isDead").value
-    const deathDate = deathDateInput.value
-    const age = getAge(birthDate)
-    const address = document.getElementById("address").value
-    const phoneNumber = document.getElementById("phoneNumber").value
-    const numberOfPregnancies = document.getElementById("numberOfPregnancies").value
-    const numberOfChildbirths = document.getElementById("numberOfChildbirths").value
-    const weight = document.getElementById('weight').value
-    const height = document.getElementById('height').value
-    const bodyMassIndex = weight / height
-    const presenceOfConcomitantDiseases = presenceOfConcomitantDiseasesInput.value
-    const concomitantDiseases = concomitantDiseasesInput.value
-    const smoking = document.getElementById("smoking").value
-    const alcoholAbuse = document.getElementById("alcoholAbuse").value
-    const allergy = document.getElementById("allergy").value
-    const cholelithiasisDiagnosisDate = document.getElementById("cholelithiasisDiagnosisDate").value
-    const diseaseCourse = document.getElementById("diseaseCourse").value
-    const surgeryType = document.getElementById("surgeryType").value
-    const cholelithiasisOrder = document.getElementById("cholelithiasisOrder").value
 
-    const emergencyReason = emergencyReasonInput.value
+    let emergencyReason = emergencyReasonInput.value
     if (otherEmergencyReasonInput.value) {
         emergencyReason = otherEmergencyReasonInput.value
     }
 
-    const presenceOfComplicationsChronicEndometritis = presenceOfComplicationsChronicEndometritisInput.value
-    const complicationsChronicEndometritis = complicationsChronicEndometritis.value
+    // const presenceOfComplicationsChronicEndometritis = presenceOfComplicationsChronicEndometritisInput.value
+    let complicationsChronicEndometritis = complicationsChronicEndometritisInput.value
     if (otherComplicationsChronicEndometritisInput.value) {
         complicationsChronicEndometritis = otherComplicationsChronicEndometritisInput.value
     }
 
-    const koykoDays = document.getElementById("koykoDays").value
-
-    const descriptionOfMacropreparation = descriptionOfMacropreparationInput.value
+    let descriptionOfMacropreparation = descriptionOfMacropreparationInput.value
     if (otherDescriptionOfMacropreparationInput.value) {
         descriptionOfMacropreparation = otherDescriptionOfMacropreparationInput.value
     }
+    const weight = document.getElementById('weight').value
+    const height = document.getElementById('height').value
 
-    const heredityIsBurdenedWithCholelithiasis = document.getElementById("heredityIsBurdenedWithCholelithiasis").value
+    let resultData = {
+        patientId: patientInfo.id,
+        // firstName: fullName[1],
+        // secondName: fullName[0],
+        // fathersName: fullName[2],
+        // sex: (patientInfo.sex == "MALE") ? "Мужской" : "Женский",
+        // isDead: document.getElementById("isDead").value,
 
-    const pain = painInput.value
-    const localisation = localisationInput.value
-    const irradiation = irradiationInput.value
-    const durance = duranceInput.value
+        generalInformation: {
+            birthDate: document.getElementById("birthDateInput").value,
+            deathDate: deathDateInput.value,
+            age: getAge(document.getElementById("birthDateInput").value),
+            address: document.getElementById("address").value,
+            phoneNumber: document.getElementById("phoneNumber").value,
+            numberOfPregnancies: document.getElementById("numberOfPregnancies").value,
+            numberOfChildbirths: document.getElementById("numberOfChildbirths").value,
+            weight: weight,
+            height: height,
+            bodyMassIndex: weight / height,
+        },
+        
+        // presenceOfConcomitantDiseases: presenceOfConcomitantDiseasesInput.value,
+        anamnesisOfLife: {
+            concomitantDiseases: concomitantDiseasesInput.value,
+            smoking: document.getElementById("smoking").value,
+            alcoholAbuse: document.getElementById("alcoholAbuse").value,
+            allergy: document.getElementById("allergy").value,
+        },
 
-    const attacksOfBiliaryColic = document.getElementById("attacksOfBiliaryColic").value
-    const epigastricDiscomfort = document.getElementById("epigastricDiscomfort").value
-    const impairedToleranceToFattyFoods = document.getElementById("impairedToleranceToFattyFoods").value
-    const nausea = document.getElementById("nausea").value
-    const vomiting = document.getElementById("vomiting").value
-    const bitternessInTheMouth = document.getElementById("bitternessInTheMouth").value
-    const constipation = document.getElementById("constipation").value
-    const diarrhea = document.getElementById("diarrhea").value
-    const heartburn = document.getElementById("heartburn").value
-    const sleepDisturbance = document.getElementById("sleepDisturbance").value
-    const fever = document.getElementById("fever").value
+        cholecystectomy: {
+            cholelithiasisDiagnosisDate: document.getElementById("cholelithiasisDiagnosisDate").value,
+            diseaseCourse: document.getElementById("diseaseCourse").value,
+            surgeryType: document.getElementById("surgeryType").value,
+            cholelithiasisOrder: document.getElementById("cholelithiasisOrder").value,
+            emergencyReason: emergencyReason,
+            complicationsChronicEndometritis: complicationsChronicEndometritis,
+            koykoDays: document.getElementById("koykoDays").value,
+            descriptionOfMacropreparation: descriptionOfMacropreparation,
+            heredityIsBurdenedWithCholelithiasis: document.getElementById("heredityIsBurdenedWithCholelithiasis").value,
 
-    const chestXray = chestXrayInput.value
-    const chestXrayDeviations = chestXrayDeviationsInput.value
-    const electrocardiography = electrocardiographyInput.value
-    const electrocardiographyDeviations = electrocardiographyDeviationsInput.value
+        },
 
-    const generalBloodAnalysis = document.getElementById("generalBloodAnalysis").value
-    const hemoglobin = document.getElementById("hemoglobin").value
-    const redBloodCells = document.getElementById("redBloodCells").value
-    const leukocytes = document.getElementById("leukocytes").value
-    const erythrocyteSedimentationRate = document.getElementById("erythrocyteSedimentationRate").value
+        clinicalPart: {
+            pain: painInput.value,
+            localisation: localisationInput.value,
+            irradiation: irradiationInput.value,
+            durance: duranceInput.value,
+            attacksOfBiliaryColic: document.getElementById("attacksOfBiliaryColic").value,
+            epigastricDiscomfort: document.getElementById("epigastricDiscomfort").value,
+            impairedToleranceToFattyFoods: document.getElementById("impairedToleranceToFattyFoods").value,
+            nausea: document.getElementById("nausea").value,
+            vomiting: document.getElementById("vomiting").value,
+            bitternessInTheMouth: document.getElementById("bitternessInTheMouth").value,
+            constipation: document.getElementById("constipation").value,
+            diarrhea: document.getElementById("diarrhea").value,
+            heartburn: document.getElementById("heartburn").value,
+            sleepDisturbance: document.getElementById("sleepDisturbance").value,
+            fever: document.getElementById("fever").value,
+        },
 
-    const generalUrineAnalysis = generalUrineAnalysisInput.value
-    const generalUrineAnalysisDeviations = generalUrineAnalysisDeviationsInput.value
-
-    const bloodType = document.getElementById("bloodType").value
-    const rhFactor = document.getElementById("rhFactor").value
-
-    const biochemicalStudies = biochemicalStudiesInput.value
-    const cholesterol = cholesterolInput.value
-    const totalBilirubin = totalBilirubinInput.value
-    const directBilirubin = directBilirubinInput.value
-    const indirectBilirubin = indirectBilirubinInput.value
-    const alt = altInput.value
-    const ast = astInput.value
-    const alkalinePhosphatase = alkalinePhosphataseInput.value
-    const gammaGlutamylTransferase = gammaGlutamylTransferaseInput.value
-    const serumGlucose = serumGlucoseInput.value
-
-    const fibrogastroduodenoscopy = document.getElementById("fibrogastroduodenoscopy").value
-    const ultrasoundExaminationOfTheAbdominalOrgans = document.getElementById("ultrasoundExaminationOfTheAbdominalOrgans").value
-
+        laboratoryInstrumentalResearchMethods: {
+            chestXray: chestXrayInput.value,
+            chestXrayDeviations: chestXrayDeviationsInput.value,
+            electrocardiography: electrocardiographyInput.value,
+            electrocardiographyDeviations: electrocardiographyDeviationsInput.value,
+            generalBloodAnalysis: document.getElementById("generalBloodAnalysis").value,
+            hemoglobin: document.getElementById("hemoglobin").value,
+            redBloodCells: document.getElementById("redBloodCells").value,
+            leukocytes: document.getElementById("leukocytes").value,
+            erythrocyteSedimentationRate: document.getElementById("erythrocyteSedimentationRate").value,
+            generalUrineAnalysis: generalUrineAnalysisInput.value,
+            generalUrineAnalysisDeviations: generalUrineAnalysisDeviationsInput.value,
+            bloodType: document.getElementById("bloodType").value,
+            rhFactor: document.getElementById("rhFactor").value,
+            biochemicalStudies: biochemicalStudiesInput.value,
+            cholesterol: cholesterolInput.value,
+            totalBilirubin: totalBilirubinInput.value,
+            directBilirubin: directBilirubinInput.value,
+            indirectBilirubin: indirectBilirubinInput.value,
+            alt: altInput.value,
+            ast: astInput.value,
+            alkalinePhosphatase: alkalinePhosphataseInput.value,
+            gammaGlutamylTransferase: gammaGlutamylTransferaseInput.value,
+            serumGlucose: serumGlucoseInput.value,
+            fibrogastroduodenoscopy: document.getElementById("fibrogastroduodenoscopy").value,
+            ultrasoundExaminationOfTheAbdominalOrgans: document.getElementById("ultrasoundExaminationOfTheAbdominalOrgans").value
+        }
+    }
+    return JSON.stringify(resultData)
 }
+
+
+async function completePoll() {
+    const request = await fetch(`http://localhost:8080/api/v1/poll`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "*/*",
+            "Authorization": `Bearer ${localStorage.getItem('token')}`
+        },
+        body: getPollData()
+    })
+
+    if (request.ok) {
+        // window.location.href = "/"
+    }
+}
+
 
 initPoll()
