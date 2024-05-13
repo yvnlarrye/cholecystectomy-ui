@@ -52,5 +52,9 @@ public class RouteController {
         return "poll_preview";
     }
 
+    @GetMapping("/doctor/create")
+    public String createDoctor() {
+        return "sign-up-doctor";
+    }
 
 }

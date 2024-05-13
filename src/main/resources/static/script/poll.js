@@ -1,4 +1,5 @@
 import { getUserInfo } from "./utils.js"
+import { getAge } from "./utils.js"
 
 const noAnswer = "Нет"
 const yesAnswer = "Да"
@@ -222,13 +223,6 @@ function initPoll() {
 
 }
 
-function getAge(birthDateStr) {
-    var birthDate = new Date(birthDateStr);
-    var currentDate = new Date();
-    var difference = currentDate - birthDate;
-    return Math.floor(difference / (1000 * 60 * 60 * 24 * 365.25));
-}
-
 
 function getPollData() {
     const fullName = patientInfo.name.split(" ")
@@ -238,7 +232,6 @@ function getPollData() {
         emergencyReason = otherEmergencyReasonInput.value
     }
 
-    // const presenceOfComplicationsChronicEndometritis = presenceOfComplicationsChronicEndometritisInput.value
     let complicationsChronicEndometritis = complicationsChronicEndometritisInput.value
     if (otherComplicationsChronicEndometritisInput.value) {
         complicationsChronicEndometritis = otherComplicationsChronicEndometritisInput.value
@@ -250,6 +243,7 @@ function getPollData() {
     }
     const weight = document.getElementById('weight').value
     const height = document.getElementById('height').value
+    let bodyMassIndex = weight / height
 
     let resultData = {
         patientId: patientInfo.id,
@@ -264,10 +258,9 @@ function getPollData() {
             numberOfChildbirths: document.getElementById("numberOfChildbirths").value,
             weight: weight,
             height: height,
-            bodyMassIndex: weight / height,
+            bodyMassIndex: bodyMassIndex.toFixed(2),
         },
         
-        // presenceOfConcomitantDiseases: presenceOfConcomitantDiseasesInput.value,
         anamnesisOfLife: {
             concomitantDiseases: concomitantDiseasesInput.value,
             smoking: document.getElementById("smoking").value,

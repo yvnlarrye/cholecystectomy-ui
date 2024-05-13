@@ -1,6 +1,8 @@
 import { getPatientById } from "./utils.js"
 import { BASE_URL } from "./utils.js"
 import { getUserInfo } from "./utils.js"
+import { getPatientPolls } from "./utils.js"
+import { formatDate } from "./utils.js"
 
 
 const ROLE_PATIENT = "ROLE_PATIENT"
@@ -80,24 +82,6 @@ async function assignDoctorToPatient(patientId, doctorId) {
     throw new Error("Не удалось назначить врача")
 }
 
-async function getPatientPolls(patientId) {
-    const request = await fetch(`${BASE_URL}/patient/${patientId}/polls`, {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json",
-            "Accept": "*/*",
-            "Authorization": `Bearer ${localStorage.getItem('token')}`
-        }
-    })
-
-    if (request.ok) {
-        return await request.json()
-    }
-
-    throw new Error("Не удалось назначить врача")
-}
-
-
 async function insertProfile(profileHtmlFileName) {
     await fetch(profileHtmlFileName)
         .then(response => response.text())
@@ -105,16 +89,6 @@ async function insertProfile(profileHtmlFileName) {
             document.getElementById('profile').innerHTML = html;
         })
         .catch(error => console.error('Ошибка загрузки файла:', error));
-}
-
-function formatDate(inputDate) {
-    const date = new Date(inputDate);
-    
-    const day = date.getDate().toString().padStart(2, '0');
-    const month = (date.getMonth() + 1).toString().padStart(2, '0'); // Месяцы в JavaScript начинаются с 0
-    const year = date.getFullYear();
-
-    return `${day}-${month}-${year}`;
 }
 
 
