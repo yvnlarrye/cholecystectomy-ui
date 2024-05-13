@@ -18,7 +18,7 @@ export async function getPatientById(id) {
 }
 
 export async function getUserInfo() {
-    return await fetch(`${BASE_URL}/user-info`, {
+    const request = await fetch(`${BASE_URL}/user-info`, {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
@@ -26,6 +26,12 @@ export async function getUserInfo() {
             "Authorization": `Bearer ${localStorage.getItem('token')}`
         }
     })
+
+    if (request.ok) {
+        return await request.json()
+    }
+
+    throw new Error("Не удалось получить данные пользователя")
 }
 
 export async function getPatientPolls(patientId) {
@@ -58,6 +64,8 @@ export function formatDate(inputDate) {
     const day = date.getDate().toString().padStart(2, '0');
     const month = (date.getMonth() + 1).toString().padStart(2, '0'); // Месяцы в JavaScript начинаются с 0
     const year = date.getFullYear();
+    const minuntes = date.getMinutes()
+    const hours = date.getHours()
 
-    return `${day}-${month}-${year}`;
+    return `${day}-${month}-${year} ${hours}:${minuntes}`;
 }

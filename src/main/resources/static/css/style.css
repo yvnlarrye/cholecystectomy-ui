@@ -3,3 +3,6 @@
     overflow: auto;
 }
 
+.poll-table {
+    max-width: 300vh;
+}

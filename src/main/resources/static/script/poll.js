@@ -5,7 +5,7 @@ const noAnswer = "Нет"
 const yesAnswer = "Да"
 const otherAnswer = "Другое"
 
-const patientInfo = await (await getUserInfo()).json()
+const patientInfo = await getUserInfo()
 
 const isDeadInput = document.getElementById("isDead")
 const deathDateInput = document.getElementById("deathDate")
@@ -225,8 +225,6 @@ function initPoll() {
 
 
 function getPollData() {
-    const fullName = patientInfo.name.split(" ")
-
     let emergencyReason = emergencyReasonInput.value
     if (otherEmergencyReasonInput.value) {
         emergencyReason = otherEmergencyReasonInput.value
@@ -243,7 +241,7 @@ function getPollData() {
     }
     const weight = document.getElementById('weight').value
     const height = document.getElementById('height').value
-    let bodyMassIndex = weight / height
+    let bodyMassIndex = (height) ? (weight / height).toFixed(2) : null
 
     let resultData = {
         patientId: patientInfo.id,
@@ -258,7 +256,7 @@ function getPollData() {
             numberOfChildbirths: document.getElementById("numberOfChildbirths").value,
             weight: weight,
             height: height,
-            bodyMassIndex: bodyMassIndex.toFixed(2),
+            bodyMassIndex: bodyMassIndex,
         },
         
         anamnesisOfLife: {

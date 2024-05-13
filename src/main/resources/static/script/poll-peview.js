@@ -1,5 +1,6 @@
 import { BASE_URL } from "./utils.js"
 import { formatDate } from "./utils.js"
+import { getUserInfo } from "./utils.js"
 
 function getPollIdFromUrl() {
     const urlParts = window.location.href.split("/")
@@ -31,6 +32,12 @@ async function getPollData() {
 
 async function displayPollData() {
     const pollData = await getPollData()
+    const userInfo = await getUserInfo()
+
+    if (userInfo.id != pollData.patientId) {
+        window.location.href = "/error"
+        return
+    }
 
     document.getElementById("patientId").innerText = pollData.patientId
     document.getElementById("createdAt").innerText = formatDate(pollData.generalInformation.createdAt)

@@ -216,24 +216,15 @@ async function displayAddPatientMenu(doctorId) {
     })
 }
 
+const userInfo = await getUserInfo()
 
-
-
-
-const request = await getUserInfo()
-
-if (request.ok) {
-    const userInfo = await request.json()
-
-    if (userInfo.role == ROLE_PATIENT) {
-        await displayPatientProfile(userInfo.id)
-    } else if (userInfo.role == ROLE_DOCTOR) {
-        await displayDoctorProfile(userInfo.id)
-    }
-
-    document.getElementById("logout").addEventListener("click", () => {
-        localStorage.clear()
-        window.location.href = "/"
-    })
+if (userInfo.role == ROLE_PATIENT) {
+    await displayPatientProfile(userInfo.id)
+} else if (userInfo.role == ROLE_DOCTOR) {
+    await displayDoctorProfile(userInfo.id)
 }
 
+document.getElementById("logout").addEventListener("click", () => {
+    localStorage.clear()
+    window.location.href = "/"
+})
