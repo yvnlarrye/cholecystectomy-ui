@@ -80,6 +80,23 @@ async function assignDoctorToPatient(patientId, doctorId) {
     throw new Error("Не удалось назначить врача")
 }
 
+async function getPatientPolls(patientId) {
+    const request = await fetch(`${BASE_URL}/patient/${patientId}/polls`, {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "*/*",
+            "Authorization": `Bearer ${localStorage.getItem('token')}`
+        }
+    })
+
+    if (request.ok) {
+        return await request.json()
+    }
+
+    throw new Error("Не удалось назначить врача")
+}
+
 
 async function insertProfile(profileHtmlFileName) {
     await fetch(profileHtmlFileName)
@@ -89,6 +106,17 @@ async function insertProfile(profileHtmlFileName) {
         })
         .catch(error => console.error('Ошибка загрузки файла:', error));
 }
+
+function formatDate(inputDate) {
+    const date = new Date(inputDate);
+    
+    const day = date.getDate().toString().padStart(2, '0');
+    const month = (date.getMonth() + 1).toString().padStart(2, '0'); // Месяцы в JavaScript начинаются с 0
+    const year = date.getFullYear();
+
+    return `${day}-${month}-${year}`;
+}
+
 
 async function displayPatientProfile(id) {
     await insertProfile('patient_profile.html')
@@ -109,6 +137,51 @@ async function displayPatientProfile(id) {
         doctorName.innerText = "Не назначен"
         doctorJob.innerText = "-"
     }
+
+    let doctorBtn = document.getElementById("doctor-btn")
+    let pollsBtn = document.getElementById("polls-btn")
+    let patientTabContent = document.getElementById("patient-tab-content")
+
+    doctorBtn.addEventListener("click", () => {
+        if (!doctorBtn.classList.contains("active")) {
+            doctorBtn.classList.add("active")
+            pollsBtn.classList.remove("active")
+            patientTabContent.innerHTML = `
+            <div class="d-flex align-items-center">
+                <span class="fs-5 fw-bold me-3">Имя:</span>
+                <span class="fs-5" id="doctor__name">${patient.doctor.name}</span>
+            </div>
+            <div class="d-flex align-items-center">
+                <span class="fs-5 fw-bold me-3">Специализация:</span>
+                <span class="fs-5" id="doctor__job">${patient.doctor.jobName}</span>
+            </div>
+            `
+        }
+    })
+
+    pollsBtn.addEventListener("click", async () => {
+        if (!pollsBtn.classList.contains("active")) {
+            pollsBtn.classList.add("active")
+            doctorBtn.classList.remove("active")
+
+            const patientPolls = await getPatientPolls(id)
+            var pollsOutput = ""
+
+            patientPolls.polls.forEach(poll => {
+                pollsOutput += `
+                <a href="/poll/${poll.id}" class="text-decoration-none text-dark">
+                    <div class="bg-light shadow-sm mb-3 border rounded-3">
+                        <div class="p-3 d-flex align-items-center justify-content-center w-100 h-100" id="patients-section">
+                            <span class="fs-5">${formatDate(poll.generalInformation.createdAt)}</span>
+                        </div>
+                    </div>
+                </a>
+                `
+            })
+            patientTabContent.innerHTML = pollsOutput
+        }
+    })
+
 }
 
 async function fillAddPatientsList() {

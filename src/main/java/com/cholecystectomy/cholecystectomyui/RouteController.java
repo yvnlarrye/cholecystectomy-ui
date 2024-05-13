@@ -42,4 +42,15 @@ public class RouteController {
         return "error";
     }
 
+    @GetMapping("/poll/complete")
+    public String pollComplete() {
+        return "poll_complete";
+    }
+
+    @GetMapping("/poll/{id}")
+    public String getPollWithId() {
+        return "poll_preview";
+    }
+
+
 }

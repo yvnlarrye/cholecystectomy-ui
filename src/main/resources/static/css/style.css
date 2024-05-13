@@ -1,4 +1,5 @@
-#patients-section {
+#patients-section, #patient-tab-content {
     height: 300px;
     overflow: auto;
 }
+

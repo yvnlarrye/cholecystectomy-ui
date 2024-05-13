@@ -253,16 +253,11 @@ function getPollData() {
 
     let resultData = {
         patientId: patientInfo.id,
-        // firstName: fullName[1],
-        // secondName: fullName[0],
-        // fathersName: fullName[2],
-        // sex: (patientInfo.sex == "MALE") ? "Мужской" : "Женский",
-        // isDead: document.getElementById("isDead").value,
 
         generalInformation: {
-            birthDate: document.getElementById("birthDateInput").value,
+            birthDate: document.getElementById("birthDate").value,
             deathDate: deathDateInput.value,
-            age: getAge(document.getElementById("birthDateInput").value),
+            age: getAge(document.getElementById("birthDate").value),
             address: document.getElementById("address").value,
             phoneNumber: document.getElementById("phoneNumber").value,
             numberOfPregnancies: document.getElementById("numberOfPregnancies").value,
@@ -355,7 +350,7 @@ async function completePoll() {
     })
 
     if (request.ok) {
-        // window.location.href = "/"
+        window.location.href = "/poll/complete"
     }
 }
 
