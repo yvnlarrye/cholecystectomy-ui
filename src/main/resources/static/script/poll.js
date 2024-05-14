@@ -1,5 +1,6 @@
 import { getUserInfo } from "./utils.js"
 import { getAge } from "./utils.js"
+import { getPollIdFromUrl } from "./utils.js"
 
 const noAnswer = "Нет"
 const yesAnswer = "Да"
@@ -60,6 +61,7 @@ const gammaGlutamylTransferaseInput = document.getElementById("gammaGlutamylTran
 const serumGlucoseInput = document.getElementById("serumGlucose")
 
 const completeBtn = document.getElementById("complete-btn")
+const updateBtn = document.getElementById("save-poll-btn")
 
 
 
@@ -217,14 +219,19 @@ function initPoll() {
 
     })
 
-    completeBtn.addEventListener("click", async () => {
-        await completePoll()
-    })
-
+    if (completeBtn) {
+        completeBtn.addEventListener("click", completePoll)
+    }
+    if (updateBtn) {
+        const pollId = getPollIdFromUrl()
+        updateBtn.addEventListener("click", async () => {
+            await updatePoll(pollId)
+        })
+    }
 }
 
 
-function getPollData() {
+function getPollBody() {
     let emergencyReason = emergencyReasonInput.value
     if (otherEmergencyReasonInput.value) {
         emergencyReason = otherEmergencyReasonInput.value
@@ -337,13 +344,31 @@ async function completePoll() {
             "Accept": "*/*",
             "Authorization": `Bearer ${localStorage.getItem('token')}`
         },
-        body: getPollData()
+        body: getPollBody()
     })
 
     if (request.ok) {
         window.location.href = "/poll/complete"
     }
 }
+
+async function updatePoll(id) {
+    const request = await fetch(`http://localhost:8080/api/v1/poll/${id}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "*/*",
+            "Authorization": `Bearer ${localStorage.getItem('token')}`
+        },
+        body: getPollBody()
+    })
+
+    if (request.ok) {
+        window.location.href = "/poll/complete"
+    }
+}
+
+
 
 
 initPoll()

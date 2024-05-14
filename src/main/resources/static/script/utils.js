@@ -58,14 +58,39 @@ export function getAge(birthDateStr) {
     return Math.floor(difference / (1000 * 60 * 60 * 24 * 365.25));
 }
 
-export function formatDate(inputDate) {
+export function shortDateFormat(inputDate) {
+    if(!inputDate) {
+        return null
+    }
+
     const date = new Date(inputDate);
     
     const day = date.getDate().toString().padStart(2, '0');
-    const month = (date.getMonth() + 1).toString().padStart(2, '0'); // Месяцы в JavaScript начинаются с 0
+    const month = (date.getMonth() + 1).toString().padStart(2, '0');
     const year = date.getFullYear();
-    const minuntes = date.getMinutes()
-    const hours = date.getHours()
 
-    return `${day}-${month}-${year} ${hours}:${minuntes}`;
+    return `${year}-${month}-${day}`;
 }
+
+export function fullDateFormat(inputDate) {
+    if(!inputDate) {
+        return null
+    }
+
+    const date = new Date(inputDate);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0'); 
+    const day = String(date.getDate()).padStart(2, '0');
+    const hours = String(date.getHours()).padStart(2, '0');
+    const minutes = String(date.getMinutes()).padStart(2, '0');
+
+    const formattedDate = `${year}-${month}-${day} ${hours}:${minutes}`;
+
+    return formattedDate;
+}
+
+export function getPollIdFromUrl() {
+    const urlParts = window.location.href.split("/")
+    return urlParts[urlParts.length - 1]
+}
+    

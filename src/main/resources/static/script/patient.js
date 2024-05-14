@@ -1,5 +1,7 @@
 import { getPatientById } from "./utils.js";
 import { BASE_URL } from "./utils.js";
+import { getPatientPolls } from "./utils.js";
+import { fullDateFormat } from "./utils.js";
 
 function getPatientFromUrl() {
     const urlParts = window.location.href.split("/")
@@ -26,8 +28,11 @@ async function unassignPatient(patientId) {
     throw new Error("Не удалось назначить врача")
 }
 
-async function displayPatientInfo() {
-    const patientId = getPatientFromUrl()
+async function assignQuiz() {
+
+}
+
+async function displayPatientInfo(patientId) {
     const patient = await getPatientById(patientId)
 
     document.getElementById("patient_id").innerText = patientId
@@ -43,10 +48,33 @@ async function displayPatientInfo() {
     })
 }
 
-async function assignQuiz() {
+async function displayPolls(patientId) {
+    let patientTabContent = document.getElementById("patient-tab-content")
 
+    const patientPolls = await getPatientPolls(patientId)
+    var pollsOutput = ""
+
+    patientPolls.polls.forEach(poll => {
+        pollsOutput += `
+        <a href="/edit-poll/${poll.id}" class="text-decoration-none text-dark">
+            <div class="bg-light shadow-sm mb-3 border rounded-3">
+                <div class="p-3 d-flex align-items-center justify-content-center w-100 h-100" id="patients-section">
+                    <span class="fs-5">${fullDateFormat(poll.generalInformation.createdAt)}</span>
+                </div>
+            </div>
+        </a>
+        `
+    })
+    patientTabContent.innerHTML = pollsOutput
+}
+
+
+async function initPatient() {
+    const patientId = getPatientFromUrl()
+    await displayPatientInfo(patientId)
+    await displayPolls(patientId)
 }
 
 
 
-await displayPatientInfo()
+await initPatient()

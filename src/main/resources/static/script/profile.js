@@ -2,7 +2,7 @@ import { getPatientById } from "./utils.js"
 import { BASE_URL } from "./utils.js"
 import { getUserInfo } from "./utils.js"
 import { getPatientPolls } from "./utils.js"
-import { formatDate } from "./utils.js"
+import { fullDateFormat } from "./utils.js"
 
 
 const ROLE_PATIENT = "ROLE_PATIENT"
@@ -146,7 +146,7 @@ async function displayPatientProfile(id) {
                 <a href="/poll/${poll.id}" class="text-decoration-none text-dark">
                     <div class="bg-light shadow-sm mb-3 border rounded-3">
                         <div class="p-3 d-flex align-items-center justify-content-center w-100 h-100" id="patients-section">
-                            <span class="fs-5">${formatDate(poll.generalInformation.createdAt)}</span>
+                            <span class="fs-5">${fullDateFormat(poll.generalInformation.createdAt)}</span>
                         </div>
                     </div>
                 </a>

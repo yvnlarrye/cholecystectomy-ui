@@ -44,17 +44,22 @@ public class RouteController {
 
     @GetMapping("/poll/complete")
     public String pollComplete() {
-        return "poll_complete";
+        return "poll-complete";
     }
 
     @GetMapping("/poll/{id}")
     public String getPollWithId() {
-        return "poll_preview";
+        return "poll-preview";
     }
 
     @GetMapping("/doctor/create")
     public String createDoctor() {
         return "sign-up-doctor";
+    }
+
+    @GetMapping("/edit-poll/{id}")
+    public String editPoll() {
+        return "edit-poll";
     }
 
 }
