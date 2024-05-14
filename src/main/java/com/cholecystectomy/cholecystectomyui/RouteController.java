@@ -17,6 +17,11 @@ public class RouteController {
         return "patient";
     }
 
+    @GetMapping("/doctor/{id}")
+    public String doctorCard() {
+        return "doctor";
+    }
+
     @GetMapping("/sign-up")
     public String sighUp() {
         return "sign-up";
@@ -52,7 +57,7 @@ public class RouteController {
         return "poll-preview";
     }
 
-    @GetMapping("/doctor/create")
+    @GetMapping("/sign-up-doctor")
     public String createDoctor() {
         return "sign-up-doctor";
     }

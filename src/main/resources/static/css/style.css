@@ -1,4 +1,4 @@
-#patients-section, #patient-tab-content {
+#patients-section, #patient-tab-content #admin-tab {
     height: 400px;
     overflow: auto;
 }

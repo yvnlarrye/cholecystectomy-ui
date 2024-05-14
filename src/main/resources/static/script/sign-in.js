@@ -21,8 +21,6 @@ loginButton.addEventListener('click', async function () {
     if (request.ok) {
         const response = await request.json()
         localStorage.setItem("token", response.token)
-        localStorage.setItem("name", response.name)
-        localStorage.setItem("email", response.email)
         window.location.href = "/"
     } else if (request.status === BAD_REQUEST) {
         errorMessageElement.innerText = "Неверный логин или пароль"

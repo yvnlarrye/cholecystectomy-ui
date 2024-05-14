@@ -89,8 +89,58 @@ export function fullDateFormat(inputDate) {
     return formattedDate;
 }
 
-export function getPollIdFromUrl() {
+export function getIdFromUrl() {
     const urlParts = window.location.href.split("/")
     return urlParts[urlParts.length - 1]
 }
+
+export async function deleteUser(id) {
+    const request = await fetch(`${BASE_URL}/admin/user/${id}`, {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "*/*",
+            "Authorization": `Bearer ${localStorage.getItem('token')}`
+        }
+    })
+
+    if (request.ok) {
+        return await request.json()
+    }
+
+    throw new Error("Не удалось удалить пользователя")
+}
+
+export async function getDoctorById(id) {
+    const request = await fetch(`${BASE_URL}/doctor/${id}`, {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "*/*",
+            "Authorization": `Bearer ${localStorage.getItem('token')}`
+        }
+    })
+
+    if (request.ok) {
+        return await request.json()
+    }
+
+    throw new Error("Не удалось получить данные врача")
+}
     
+export async function getDoctorPatients(doctorId) {
+    const request = await fetch(`${BASE_URL}/doctor/${doctorId}/patients`, {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "*/*",
+            "Authorization": `Bearer ${localStorage.getItem('token')}`
+        }
+    })
+
+    if (request.ok) {
+        return await request.json()
+    }
+
+    throw new Error("Не удалось получить данные врача")
+}

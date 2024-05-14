@@ -1,10 +1,9 @@
 import { getUserInfo } from "./utils.js"
 import { getAge } from "./utils.js"
-import { getPollIdFromUrl } from "./utils.js"
+import { getIdFromUrl } from "./utils.js"
 import { getPatientById } from "./utils.js"
 
 const noAnswer = "Нет"
-const yesAnswer = "Да"
 const otherAnswer = "Другое"
 
 const patientInfo = await getUserInfo()
@@ -231,7 +230,7 @@ function initPoll() {
         completeBtn.addEventListener("click", completePoll)
     }
     if (updateBtn) {
-        const pollId = getPollIdFromUrl()
+        const pollId = getIdFromUrl()
         updateBtn.addEventListener("click", async () => {
             await updatePoll(pollId)
         })

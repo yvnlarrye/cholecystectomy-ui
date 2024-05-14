@@ -1,11 +1,7 @@
 import { BASE_URL } from "./utils.js"
 import { fullDateFormat } from "./utils.js"
 import { getUserInfo } from "./utils.js"
-
-function getPollIdFromUrl() {
-    const urlParts = window.location.href.split("/")
-    return urlParts[urlParts.length - 1]
-}
+import { getIdFromUrl } from "./utils.js"
 
 
 async function getPollById(pollId) {
@@ -26,7 +22,7 @@ async function getPollById(pollId) {
 }
 
 async function getPollData() {
-    const pollId = getPollIdFromUrl()
+    const pollId = getIdFromUrl()
     return await getPollById(pollId)
 }
 
