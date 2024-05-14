@@ -1,0 +1,548 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cholecystectomy</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+
+<body>
+
+  <div class="wrapper m-0 p-0">
+    <div id="header"></div>
+    <main>
+      <div class="container w-75 p-5">
+        <h1 class="text-center">Опрос</h1>
+        <div class="rounded-3 shadow p-5 mt-3">
+          <h3>Общая информация</h3>
+          <div class="row mb-3 bg-light rounded-5 p-4">
+            <div class="col-4">
+              <label for="birthDate" class="form-label">Дата рождения</label>
+              <div class="input-group date" data-provide="datepicker">
+                <input id="birthDate" required type="date" class="form-control">
+              </div>
+            </div>
+            <div class="col-4">
+              <label for="exampleInputEmail1" class="form-label">Пациент скончался</label>
+              <select id="isDead" class="form-select">
+                <option selected>Нет</option>
+                <option>Да</option>
+              </select>
+            </div>
+            <div class="col-4">
+              <label for="deathDate" class="form-label">Дата смерти</label>
+              <div class="input-group date" data-provide="datepicker">
+                <input disabled id="deathDate" required type="date" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="row mb-3 bg-light rounded-5 p-4">
+            <div class="col-7">
+              <div class="mb-3">
+                <label for="address" class="form-label">Место проживания</label>
+                <input id="address" required type="text" class="form-control">
+              </div>
+            </div>
+            <div class="col-5">
+              <div class="mb-3">
+                <label for="phoneNumber" class="form-label">Телефон</label>
+                <input required type="tel" class="form-control" id="phoneNumber">
+              </div>
+            </div>
+          </div>
+          <div class="row mb-3 bg-light rounded-5 p-4" id="pregnancy">
+            <div class="col-7">
+              <div class="mb-3">
+                <label for="numberOfPregnancies" class="form-label">Количество беременностей</label>
+                <input required min="0" type="number" class="form-control" id="numberOfPregnancies">
+              </div>
+            </div>
+            <div class="col-5">
+              <div class="mb-3">
+                <label for="numberOfChildbirths" class="form-label">Количество родов</label>
+                <input required min="0" type="number" class="form-control" id="numberOfChildbirths" >
+              </div>
+            </div>
+          </div>
+          <div class="row mb-3 bg-light rounded-5 p-4">
+            <div class="col-6">
+              <div class="mb-3">
+                <label for="weight" class="form-label">Вес</label>
+                <input required min="0" type="number" class="form-control" id="weight">
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="mb-3">
+                <label for="height" class="form-label">Рост</label>
+                <input required min="0" type="number" class="form-control" id="height">
+              </div>
+            </div>
+          </div>
+
+          <h3>Анамнез жизни</h3>
+          <div class="row mb-3 bg-light rounded-5 p-4">
+            <div class="col-6">
+              <label for="presenceOfConcomitantDiseases" class="form-label">Наличие сопутсвующих заболеваний</label>
+              <select id="presenceOfConcomitantDiseases" class="form-select">
+                <option selected>Нет</option>
+                <option>Да</option>
+              </select>
+            </div>
+            <div class="col-6">
+              <label for="concomitantDiseases" class="form-label">Сопутствующие заболевания</label>
+              <textarea disabled required rows="1" class="form-control" id="concomitantDiseases"></textarea>
+            </div>
+          </div>
+          
+          <div class="row mb-3 bg-light rounded-5 p-4">
+            <div class="col-4">
+              <label for="smoking" class="form-label">Курение</label>
+              <select id="smoking" class="form-select">
+                <option selected>Нет</option>
+                <option>Да</option>
+              </select>
+            </div>
+            <div class="col-4">
+              <label for="alcoholAbuse" class="form-label">Злоупотребление алкоголем</label>
+              <select id="alcoholAbuse" class="form-select">
+                <option selected>Нет</option>
+                <option>Да</option>
+              </select>
+            </div>
+            <div class="col-4">
+              <label for="allergy" class="form-label">Аллергологический анамнез</label>
+              <select id="allergy" class="form-select">
+                <option selected>Нет</option>
+                <option>Да</option>
+              </select>
+            </div>
+          </div>
+
+          <h3 class="mt-3">Анамнез ЖКБ. Холицестоктомия</h3>
+          <div class="row mb-3 bg-light rounded-5 p-4">
+            <div class="col-4">
+              <label for="cholelithiasisDiagnosisDate" class="form-label">Дата постановки диагноза ЖКБ</label>
+              <div class="input-group date" data-provide="datepicker">
+                <input id="cholelithiasisDiagnosisDate" required type="date" class="form-control">
+              </div>
+            </div>
+            <div class="col-4">
+              <label for="diseaseCourse" class="form-label">Течение ЖКБ</label>
+              <select id="diseaseCourse" class="form-select">
+                <option selected>Латентное</option>
+                <option>Редкие обострения</option>
+                <option>Частые обострения</option>
+              </select>
+            </div>
+            <div class="col-4">
+              <label for="surgeryType" class="form-label">Вид операции (холецистэктомии)</label>
+              <select id="surgeryType" class="form-select">
+                <option selected>Холецистэктомия из мини-доступа</option>
+                <option>Холецистэктомия из открытого доступа</option>
+                <option>Лапароскопическая холецистэктомия</option>
+              </select>
+            </div>
+          </div>
+          <div class="row mb-3 bg-light rounded-5 p-4">
+            <div class="col-4">
+              <label for="cholelithiasisOrder" class="form-label">Порядок Холецистэктомии</label>
+              <select id="cholelithiasisOrder" class="form-select">
+                <option selected>Плановая</option>
+                <option>Экстренная</option>
+              </select>
+            </div>
+            <div class="col-4">
+              <label for="emergencyReason" class="form-label">Причина</label>
+              <select disabled id="emergencyReason" class="form-select">
+                <option selected disabled></option>
+                <option>Механическая желтуха</option>
+                <option>Острый холецистит</option>
+                <option>Водянка и эмпиема желчтного пузыря</option>
+                <option>Желчная колика</option>
+                <option>Другое</option>
+              </select>
+            </div>
+            <div class="col-4">
+              <label for="exampleInputEmail1" class="form-label">Другая причина</label>
+              <textarea disabled id="otherEmergencyReason" required rows="1" class="form-control"></textarea>
+            </div>
+          </div>
+
+          <div class="row mb-3 bg-light rounded-5 p-4">
+            <div class="col-4">
+              <label for="presenceOfComplicationsChronicEndometritis" class="form-label">Осложнения после ХЭ</label>
+              <select id="presenceOfComplicationsChronicEndometritis" class="form-select">
+                <option selected>Нет</option>
+                <option>Да</option>
+              </select>
+            </div>
+            <div class="col-4">
+              <label for="complicationsChronicEndometritis" class="form-label">Осложнения</label>
+              <select disabled id="complicationsChronicEndometritis" class="form-select">
+                <option disabled selected></option>
+                <option>Ранние послеоперационные осложнения</option>
+                <option>Холедохолитиаз</option>
+                <option>Другое</option>
+              </select>
+            </div>
+            <div class="col-4">
+              <label for="otherComplicationsChronicEndometritis" class="form-label">Другое</label>
+              <textarea disabled required rows="1" class="form-control" id="otherComplicationsChronicEndometritis"></textarea>
+            </div>
+          </div>
+
+          <div class="row mb-3 bg-light rounded-5 p-4">
+            <div class="col-4">
+              <label for="koykoDays" class="form-label">Проведено койко – дней</label>
+              <input required min="0" type="number" class="form-control" id="koykoDays">
+            </div>
+            <div class="col-4">
+              <label for="descriptionOfMacropreparation" class="form-label">Описание макропрепарата</label>
+              <select id="descriptionOfMacropreparation" class="form-select">
+                <option selected>количество камней  -1</option>
+                <option>группа камней</option>
+                <option>Другое</option>
+              </select>
+            </div>
+            <div class="col-4">
+              <label for="otherDescriptionOfMacropreparation" class="form-label">Другое</label>
+              <textarea disabled required rows="1" class="form-control" id="otherDescriptionOfMacropreparation"></textarea>
+            </div>
+          </div>
+
+          <div class="row mb-3 bg-light rounded-5 p-4">
+            <div class="col-4">
+              <label for="heredityIsBurdenedWithCholelithiasis" class="form-label">Наследственность отягчена по ЖКБ</label>
+              <select id="heredityIsBurdenedWithCholelithiasis" class="form-select">
+                <option selected>Нет</option>
+                <option>Да</option>
+              </select>
+            </div>
+          </div>
+
+          <h3 class="mt-3">Клиническая часть</h3>
+          <div class="row mb-3 bg-light rounded-5 p-4">
+            <div class="col-3">
+              <label for="pain" class="form-label">Боль</label>
+              <select id="pain" class="form-select">
+                <option selected>Нет</option>
+                <option>Да</option>
+              </select>
+            </div>
+            <div class="col-3">
+              <label for="localisation" class="form-label">Локализация</label>
+              <select disabled id="localisation" class="form-select">
+                <option selected disabled></option>
+                <option>Эпигастрий</option>
+                <option>Правое подреберье</option>
+                <option>Левое подреберье</option>
+              </select>
+            </div>
+            <div class="col-3">
+              <label for="irradiation" class="form-label">Иррадиация</label>
+              <select disabled id="irradiation" class="form-select">
+                <option selected disabled></option>
+                <option>Нет</option>
+                <option>В спину</option>
+                <option>Под правую лопатку</option>
+              </select>
+            </div>
+            <div class="col-3">
+              <label for="durance" class="form-label">Длительность</label>
+              <select disabled id="durance" class="form-select">
+                <option selected disabled></option>
+                <option>Кратковременные</option>
+                <option>До 30 минут</option>
+                <option>Более 30 минут</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row mb-3 bg-light rounded-5 p-4">
+            <div class="col-4">
+              <label for="attacksOfBiliaryColic" class="form-label">Приступы желчной колики</label>
+              <select id="attacksOfBiliaryColic" class="form-select">
+                <option selected>Нет</option>
+                <option>Да</option>
+              </select>
+            </div>
+            <div class="col-4">
+              <label for="epigastricDiscomfort" class="form-label">Дискомфорт в эпигастрии</label>
+              <select id="epigastricDiscomfort" class="form-select">
+                <option selected>Нет</option>
+                <option>Да</option>
+              </select>
+            </div>
+            <div class="col-4">
+              <label for="impairedToleranceToFattyFoods" class="form-label">Нарушение переносимости жирной пищи</label>
+              <select id="impairedToleranceToFattyFoods" class="form-select">
+                <option selected>Нет</option>
+                <option>Да</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row mb-3 bg-light rounded-5 p-4">
+            <div class="col-4">
+              <label for="nausea" class="form-label">Тошнота</label>
+              <select id="nausea" class="form-select">
+                <option selected>Нет</option>
+                <option>Да</option>
+              </select>
+            </div>
+            <div class="col-4">
+              <label for="vomiting" class="form-label">Рвота</label>
+              <select id="vomiting" class="form-select">
+                <option selected>Нет</option>
+                <option>Да</option>
+              </select>
+            </div>
+            <div class="col-4">
+              <label for="bitternessInTheMouth" class="form-label">Горечь во рту</label>
+              <select id="bitternessInTheMouth" class="form-select">
+                <option selected>Нет</option>
+                <option>Да</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row mb-3 bg-light rounded-5 p-4">
+            <div class="col-4">
+              <label for="constipation" class="form-label">Запор</label>
+              <select id="constipation" class="form-select">
+                <option selected>Нет</option>
+                <option>Да</option>
+              </select>
+            </div>
+            <div class="col-4">
+              <label for="diarrhea" class="form-label">Диарея</label>
+              <select id="diarrhea" class="form-select">
+                <option selected>Нет</option>
+                <option>Да</option>
+              </select>
+            </div>
+            <div class="col-4">
+              <label for="heartburn" class="form-label">Изжога</label>
+              <select id="heartburn" class="form-select">
+                <option selected>Нет</option>
+                <option>Да</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row mb-3 bg-light rounded-5 p-4">
+            <div class="col">
+              <label for="sleepDisturbance" class="form-label">Нарушение сна</label>
+              <select id="sleepDisturbance" class="form-select">
+                <option selected>Нет</option>
+                <option>Да</option>
+              </select>
+            </div>
+            <div class="col">
+              <label for="fever" class="form-label">Лихорадка</label>
+              <select id="fever" class="form-select">
+                <option selected>Нет</option>
+                <option>Да</option>
+              </select>
+            </div>
+          </div>
+
+          <h3 class="mt-3">Данные лабораторно – инструментальных методов исследований</h3>
+          <div class="row mb-3 bg-light rounded-5 p-4">
+            <div class="col-4">
+              <label for="chestXray" class="form-label">Рентгенологическое исследование грудной клетки</label>
+              <select id="chestXray" class="form-select">
+                <option selected>Нет</option>
+                <option>Да</option>
+              </select>
+            </div>
+            <div class="col-4">
+              <label for="presenceOfChestXrayDeviations" class="form-label">Имеются ли клинически значимые отклонения</label>
+              <select disabled id="presenceOfChestXrayDeviations" class="form-select">
+                <option selected>Нет</option>
+                <option>Да</option>
+              </select>
+            </div>
+            <div class="col-4">
+              <label for="chestXrayDeviations" class="form-label">Отклонения</label>
+              <textarea disabled id="chestXrayDeviations" required rows="1" class="form-control"></textarea>
+            </div>
+          </div>
+
+          <div class="row mb-3 bg-light rounded-5 p-4">
+            <div class="col-4">
+              <label for="electrocardiography" class="form-label">Электрокардиография</label>
+              <select id="electrocardiography" class="form-select">
+                <option selected>Нет</option>
+                <option>Да</option>
+              </select>
+            </div>
+            <div class="col-4">
+              <label for="presenseElectrocardiographyDeviations" class="form-label">Имеются ли клинически значимые отклонения</label>
+              <select disabled id="presenseElectrocardiographyDeviations" class="form-select">
+                <option selected>Нет</option>
+                <option>Да</option>
+              </select>
+            </div>
+            <div class="col-4">
+              <label for="electrocardiographyDeviations" class="form-label">Отклонения</label>
+              <textarea disabled id="electrocardiographyDeviations" required rows="1" class="form-control"></textarea>
+            </div>
+          </div>
+
+          <div class="row mb-3 bg-light rounded-5 p-4">
+            <div class="col-4">
+              <label for="generalBloodAnalysis" class="form-label">Общий анализ крови</label>
+              <select id="generalBloodAnalysis" class="form-select">
+                <option selected>Нет</option>
+                <option>Да</option>
+              </select>
+            </div>
+
+            <div class="col-8">
+              <div class="row">
+                <div class="col-3">
+                  <label for="hemoglobin" class="form-label">Гемоглобин</label>
+                  <input disabled required type="text" class="form-control" id="hemoglobin">
+                </div>
+                <div class="col-3">
+                  <label for="redBloodCells" class="form-label">Эритроциты</label>
+                  <input disabled required type="text" class="form-control" id="redBloodCells" >
+                </div>
+                <div class="col-3">
+                  <label for="leukocytes" class="form-label">Лейкоциты</label>
+                  <input disabled required type="text" class="form-control" id="leukocytes" >
+                </div>
+                <div class="col-3">
+                  <label for="erythrocyteSedimentationRate" class="form-label">СОЭ</label>
+                  <input disabled required type="text" class="form-control" id="erythrocyteSedimentationRate" >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row mb-3 bg-light rounded-5 p-4">
+            <div class="col-4">
+              <label for="generalUrineAnalysis" class="form-label">Общий анализ мочи</label>
+              <select id="generalUrineAnalysis" class="form-select">
+                <option selected>Нет</option>
+                <option>Да</option>
+              </select>
+            </div>
+            <div class="col-4">
+              <label for="presenseGeneralUrineAnalysisDeviations" class="form-label">Имеются ли клинически значимые отклонения</label>
+              <select disabled id="presenseGeneralUrineAnalysisDeviations" class="form-select">
+                <option selected>Нет</option>
+                <option>Да</option>
+              </select>
+            </div>
+            <div class="col-4">
+              <label for="generalUrineAnalysisDeviations" class="form-label">Отклонения</label>
+              <textarea disabled id="generalUrineAnalysisDeviations" required rows="1" class="form-control"></textarea>
+            </div>
+          </div>
+
+          <div class="row mb-3 bg-light rounded-5 p-4">
+            <div class="col-4">
+              <label for="bloodType" class="form-label">Группа крови</label>
+              <select id="bloodType" class="form-select">
+                <option selected>О(I)</option>
+                <option>А(II)</option>
+                <option>B(III)</option>
+                <option>AB(IV)</option>
+              </select>
+            </div>
+            <div class="col-4">
+              <label for="rhFactor" class="form-label">Резус фактор</label>
+              <select id="rhFactor" class="form-select">
+                <option selected>+</option>
+                <option>-</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row mb-3 bg-light rounded-5 p-4">
+            <div class="col-4">
+              <label for="biochemicalStudies" class="form-label">Биохимические исследования</label>
+              <select id="biochemicalStudies" class="form-select">
+                <option selected>Нет</option>
+                <option>Да</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row mb-3 bg-light rounded-5 p-4" id="biochemicalStudiesIndicators" hidden>
+            <div class="col-4">
+              <label for="cholesterol" class="form-label">Холестерин</label>
+              <input required type="text" class="form-control" id="cholesterol">
+            </div>
+            <div class="col-4">
+              <label for="totalBilirubin" class="form-label">Билирубин общий</label>
+              <input required type="text" class="form-control" id="totalBilirubin">
+            </div>
+            <div class="col-4">
+              <label for="directBilirubin" class="form-label">Билирубин прямой</label>
+              <input required type="text" class="form-control" id="directBilirubin">
+            </div>
+            <div class="col-4">
+              <label for="indirectBilirubin" class="form-label">Билирубин непрямой</label>
+              <input required type="text" class="form-control" id="indirectBilirubin">
+            </div>
+            <div class="col-4">
+              <label for="alt" class="form-label">АЛТ</label>
+              <input required type="text" class="form-control" id="alt">
+            </div>
+            <div class="col-4">
+              <label for="ast" class="form-label">АСТ</label>
+              <input required type="text" class="form-control" id="ast">
+            </div>
+            <div class="col-4">
+              <label for="alkalinePhosphatase" class="form-label">Щелочная фосфатаза (ЩФ)</label>
+              <input required type="text" class="form-control" id="alkalinePhosphatase">
+            </div>
+            <div class="col-4">
+              <label for="gammaGlutamylTransferase" class="form-label">Гамма-глютамилтрансфераза (ГГТП)</label>
+              <input required type="text" class="form-control" id="gammaGlutamylTransferase">
+            </div>
+            <div class="col-4">
+              <label for="serumGlucose" class="form-label">Глюкоза сыворотки крови</label>
+              <input required type="text" class="form-control" id="serumGlucose">
+            </div>
+          </div>
+
+          <div class="row mb-3 bg-light rounded-5 p-4">
+            <div class="col-6">
+              <label for="fibrogastroduodenoscopy" class="form-label">Фиброгастродуоденоскопия (наличие или отсутствие желчи в просвете двенадцатиперстной кишки, форму и состояние большого дуоденального сосочка, состояние слизистой оболочки двенадцатиперстной кишки) </label>
+              <select id="fibrogastroduodenoscopy" class="form-select">
+                <option selected>Нет</option>
+                <option>Да</option>
+              </select>
+            </div>
+            <div class="col-6">
+              <label for="ultrasoundExaminationOfTheAbdominalOrgans" class="form-label">Ультразвуковое исследование органов брюшной полости (наличие конкрементов в жёлчном пузыре и их размеры, наличие конкрементов в общем жёлчном протоке или косвенные признаки холедохолитиаза, степень воспалительно-инфильтративных изменений и толщина стенки жёлчного пузыря, диаметр общего печёночного, общего жёлчного и пузырного протоков, расположение и размеры жёлчного пузыря, форма, положение, контуры и размеры печени и поджелудочной железы)</label>
+              <select id="ultrasoundExaminationOfTheAbdominalOrgans" class="form-select">
+                <option selected>Нет</option>
+                <option>Да</option>
+              </select>
+            </div>
+          </div>
+          <button class="btn btn-success" id="save-poll-btn">Сохранить</button>
+        </div>
+      </div>
+    </main>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+  <script src="/script/header.js" type="module"></script>
+  <script src="/script/poll.js" type="module"></script>
+  <script src="/script/edit-poll.js" type="module"></script>
+</body>
+
+</html>

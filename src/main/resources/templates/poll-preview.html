@@ -1,0 +1,476 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cholecystectomy</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+  <div class="wrapper m-0 p-0">
+    <div id="header"></div>
+  </div>
+
+  <main class="mt-5 pt-5">
+    <div class="container w-75">
+			<table class="table table-bordered border-success px-5 mb-5 align-middle align-top poll-table">
+        <tbody>
+          <tr>
+            <td colspan="5" class="text-center bg-success bg-opacity-25">
+              <h3 class="fw-bold">Общая информация</h3>
+            </td>
+          </tr>
+          <tr>
+            <td class="align-top bg-success bg-opacity-10">
+              <div class="d-flex flex-column">
+                <span class="fw-bold me-1">Дата заполнения:</span>
+                <span id="createdAt"></span>
+              </div>
+            </td>
+            <td class="align-top bg-success bg-opacity-10">
+              <div class="d-flex flex-column">
+                <span class="fw-bold me-1">Номер пациента:</span>
+                <span id="patientId"></span>
+              </div>
+            </td>
+            <td class="align-top bg-success bg-opacity-10">
+              <div class="d-flex flex-column">
+                <span class="fw-bold me-1">Фамилия:</span>
+                <span id="surname"></span>
+              </div>
+            </td>
+            <td class="align-top bg-success bg-opacity-10">
+              <div class="d-flex flex-column">
+                <span class="fw-bold me-1">Имя:</span>
+                <span id="firstName"></span>
+              </div>
+            </td>
+            <td class="align-top bg-success bg-opacity-10">
+              <div class="d-flex flex-column">
+                <span class="fw-bold me-1">Отчество:</span>
+                <span id="fatherName"></span>
+              </div>
+            </td>
+          </tr>
+          <tr>
+						<td class="align-top bg-success bg-opacity-10">
+              <div class="d-flex flex-column">
+                <span class="fw-bold me-1">Пол:</span>
+                <span id="sex"></span>
+              </div>
+            </td>
+            <td class="align-top bg-success bg-opacity-10">
+              <div class="d-flex flex-column">
+                <span class="fw-bold me-1">Телефон:</span>
+                <span id="phoneNumber"></span>
+              </div>
+            </td>
+            <td class="align-top bg-success bg-opacity-10">
+              <div class="d-flex flex-column">
+                <span class="fw-bold me-1">Дата рождения:</span>
+                <span id="birthDate"></span>
+              </div>
+            </td>
+            <td class="align-top bg-success bg-opacity-10">
+              <div class="d-flex flex-column">
+                <span class="fw-bold me-1">Возраст:</span>
+                <span id="age"></span>
+              </div>
+            </td>
+            <td class="align-top bg-success bg-opacity-10">
+              <div class="d-flex flex-column">
+                <span class="fw-bold me-1">Дата смерти:</span>
+                <span id="deathDate"></span>
+              </div>
+            </td>
+          </tr>
+          <tr>
+						<td colspan="2" class="align-top bg-success bg-opacity-10">
+              <div class="d-flex flex-column">
+                <span class="fw-bold me-1">Место рождения:</span>
+                <span id="address"></span>
+              </div>
+            </td>
+            <td class="align-top bg-success bg-opacity-10">
+              <div class="d-flex flex-column">
+                <span class="fw-bold me-1">Рост:</span>
+                <span id="height"></span>
+              </div>
+            </td>
+            <td class="align-top bg-success bg-opacity-10">
+              <div class="d-flex flex-column">
+                <span class="fw-bold me-1">Вес:</span>
+                <span id="weight"></span>
+              </div>
+            </td>
+            <td class="align-top bg-success bg-opacity-10">
+              <div class="d-flex flex-column">
+                <span class="fw-bold me-1">ИМТ:</span>
+                <span id="bodyMassIndex"></span>
+              </div>
+            </td>
+          </tr>
+          <tr id="pregnancy">
+          </tr>
+					<tr>
+            <td colspan="3" class="text-center bg-primary bg-opacity-25">
+              <h3 class="fw-bold">Анамнез жизни</h3>
+            </td>
+            <td colspan="2" class="text-center bg-warning bg-opacity-25">
+              <h3 class="fw-bold">Клиническая часть</h3>
+            </td>
+          </tr>
+					<tr>
+						<td colspan="3" class="align-top bg-primary bg-opacity-10">
+              <div class="d-flex flex-column">
+                <span class="fw-bold me-1">Наличие сопутствующих заболеваний:</span>
+                <span id="concomitantDiseases"></span>
+              </div>
+            </td>
+						<td colspan="3" class="align-top bg-warning bg-opacity-10">
+              <div class="d-flex flex-column">
+                <div class="d-flex">
+                  <span class="fw-bold me-1">Боль:</span>
+                  <span id="pain"></span>
+                </div>
+                <div class="d-flex">
+                  <span class="me-1">Локализация:</span>
+                  <span id="localisation"></span>
+                </div>
+                <div class="d-flex">
+                  <span class="me-1">Иррадиация:</span>
+                  <span id="irradiation"></span>
+                </div>
+                <div class="d-flex">
+                  <span class="me-1">Продолжительность:</span>
+                  <span id="durance"></span>
+                </div>
+              </div>
+            </td> 
+          </tr>
+					<tr>
+						<td colspan="3" class="align-top bg-primary bg-opacity-10">
+              <div class="d-flex flex-column">
+                <span class="fw-bold me-1">Курение:</span>
+                <span id="smoking"></span>
+              </div>
+            </td>
+						<td colspan="3" class="align-top bg-warning bg-opacity-10">
+              <div class="d-flex flex-column">
+                <span class="fw-bold me-1">Приступы желчной колики:</span>
+                <span id="attacksOfBiliaryColic"></span>
+              </div>
+            </td> 
+          </tr>
+					<tr>
+						<td colspan="3" class="align-top bg-primary bg-opacity-10">
+              <div class="d-flex flex-column">
+                <span class="fw-bold me-1">Злоупротребление алкоголем:</span>
+                <span id="alcoholAbuse"></span>
+              </div>
+            </td>
+						<td colspan="3" class="align-top bg-warning bg-opacity-10">
+              <div class="d-flex flex-column">
+                <span class="fw-bold me-1">Дискоморт в эпигастрии:</span>
+                <span id="epigastricDiscomfort"></span>
+              </div>
+            </td> 
+          </tr>
+					<tr>
+						<td colspan="3" class="align-top bg-primary bg-opacity-10">
+              <div class="d-flex flex-column">
+                <span class="fw-bold me-1">Аллергологический анамнез. Аллергии:</span>
+                <span id="allergy"></span>
+              </div>
+            </td>
+						<td colspan="3" class="align-top bg-warning bg-opacity-10">
+              <div class="d-flex flex-column">
+                <span class="fw-bold me-1">Нарушение переносимости жирной пищи:</span>
+                <span id="impairedToleranceToFattyFoods"></span>
+              </div>
+            </td> 
+          </tr>
+					<tr>
+						<td colspan="3" class="align-top bg-danger bg-opacity-25 text-center">
+              <h3 class="fw-bold">Анамнез ЖКБ. Холецистэктомия</h3>
+            </td>
+						<td colspan="3" class="align-top bg-warning bg-opacity-10">
+              <div class="d-flex flex-column">
+                <span class="fw-bold me-1">Тошнота:</span>
+                <span id="nausea"></span>
+              </div>
+            </td> 
+          </tr>
+					<tr>
+						<td colspan="3" class="align-top bg-danger bg-opacity-10">
+              <div class="d-flex flex-column">
+                <span class="fw-bold me-1">Дата постановки диагноза ЖКБ:</span>
+                <span id="cholelithiasisDiagnosisDate"></span>
+              </div>
+            </td>
+						<td colspan="3" class="align-top bg-warning bg-opacity-10">
+              <div class="d-flex flex-column">
+                <span class="fw-bold me-1">Рвота:</span>
+                <span id="vomiting"></span>
+              </div>
+            </td> 
+          </tr>
+					<tr>
+						<td colspan="3" class="align-top bg-danger bg-opacity-10">
+              <div class="d-flex flex-column">
+                <span class="fw-bold me-1">Течение ЖКБ:</span>
+                <span id="diseaseCourse"></span>
+              </div>
+            </td>
+						<td colspan="3" class="align-top bg-warning bg-opacity-10">
+              <div class="d-flex flex-column">
+                <span class="fw-bold me-1">Горечь во рту:</span>
+                <span id="bitternessInTheMouth"></span>
+              </div>
+            </td> 
+          </tr>
+					<tr>
+						<td colspan="3" class="align-top bg-danger bg-opacity-10">
+              <div class="d-flex flex-column">
+                <span class="fw-bold me-1">Вид операции (холецистэктомии):</span>
+                <span id="surgeryType"></span>
+              </div>
+            </td>
+						<td colspan="3" class="align-top bg-warning bg-opacity-10">
+              <div class="d-flex flex-column">
+                <span class="fw-bold me-1">Запор:</span>
+                <span id="constipation"></span>
+              </div>
+            </td> 
+          </tr>
+					<tr>
+						<td colspan="3" class="align-top bg-danger bg-opacity-10">
+              <div class="d-flex flex-column">
+                <span class="fw-bold me-1">Осложнения после ХЭ:</span>
+                <span id="complicationsChronicEndometritis"></span>
+              </div>
+            </td>
+						<td colspan="3" class="align-top bg-warning bg-opacity-10">
+              <div class="d-flex flex-column">
+                <span class="fw-bold me-1">Диареия:</span>
+                <span id="diarrhea"></span>
+              </div>
+            </td> 
+          </tr>
+					<tr>
+						<td colspan="3" class="align-top bg-danger bg-opacity-10">
+              <div class="d-flex flex-column">
+                <span class="fw-bold me-1">Првоедено койко-дней:</span>
+                <span id="koykoDays"></span>
+              </div>
+            </td>
+						<td colspan="3" class="align-top bg-warning bg-opacity-10">
+              <div class="d-flex flex-column">
+                <span class="fw-bold me-1">Изжога:</span>
+                <span id="heartburn"></span>
+              </div>
+            </td> 
+          </tr>
+					<tr>
+						<td colspan="3" class="align-top bg-danger bg-opacity-10">
+              <div class="d-flex flex-column">
+                <span class="fw-bold me-1">Описание макропрепарата:</span>
+                <span id="descriptionOfMacropreparation"></span>
+              </div>
+            </td>
+						<td colspan="3" class="align-top bg-warning bg-opacity-10">
+              <div class="d-flex flex-column">
+                <span class="fw-bold me-1">Нарушение сна:</span>
+                <span id="sleepDisturbance"></span>
+              </div>
+            </td> 
+          </tr>
+					<tr>
+						<td colspan="3" class="align-top bg-danger bg-opacity-10">
+              <div class="d-flex flex-column">
+                <span class="fw-bold me-1">Наследственность отягчена по ЖКБ:</span>
+                <span id="heredityIsBurdenedWithCholelithiasis"></span>
+              </div>
+            </td>
+						<td colspan="3" class="align-top bg-warning bg-opacity-10">
+              <div class="d-flex flex-column">
+                <span class="fw-bold me-1">Лихорадка:</span>
+                <span id="fever"></span>
+              </div>
+            </td> 
+          </tr>
+
+          <tr>
+						<td colspan="3" class="align-top bg-danger bg-opacity-10">
+              <div class="d-flex flex-column">
+                <span class="fw-bold me-1">Порядок госпитализации:</span>
+                <span id="cholelithiasisOrder"></span>
+              </div>
+            </td>
+            <td colspan="2" class="align-top bg-warning bg-opacity-10"></td>
+          </tr>
+
+          <tr>
+            <td colspan="3" class="align-top bg-danger bg-opacity-10">
+              <div class="d-flex flex-column">
+                <span class="fw-bold me-1">Экстренная причина:</span>
+                <span id="emergencyReason"></span>
+              </div>
+            </td>
+            <td colspan="2" class="align-top bg-warning bg-opacity-10"></td>
+          </tr>
+
+          <tr>
+            <td colspan="5" class="align-top bg-light text-center">
+              <h3 class="fw-bold">Данные лабораторно-инструментальных исследований</h3>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="3" class="align-top bg-light">
+              <div class="d-flex flex-column">
+                <span class="fw-bold me-1">Рентгенологические исследования грудной клетки:</span>
+                <span id="chestXray"></span>
+                <span class="me-1">Отклонения:</span>
+                <span id="chestXrayDeviations"></span>
+              </div>
+            </td>
+            <td colspan="2" class="align-top bg-light">
+              <div class="d-flex flex-column">
+                <span class="fw-bold me-1">Электрокардиография:</span>
+                <span id="electrocardiography"></span>
+                <span class="me-1">Отклонения:</span>
+                <span id="electrocardiographyDeviations"></span>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="3" class="align-top bg-light">
+              <div class="d-flex flex-column">
+                <div class="d-flex">
+                  <span class="fw-bold me-1">Общий анализ крови:</span>
+                  <span id="generalBloodAnalysis"></span>
+                </div>
+                <div class="d-flex">
+                  <span class="me-1">Гемоглобин:</span>
+                  <span id="hemoglobin"></span>
+                </div>
+                <div class="d-flex">
+                  <span class="me-1">Количество эритроцитов:</span>
+                  <span id="redBloodCells"></span>
+                </div>
+                <div class="d-flex">
+                  <span class="me-1">Количество лейкоцитов:</span>
+                  <span id="leukocytes"></span>
+                </div>
+                <div class="d-flex">
+                  <span class="me-1">СОЭ:</span>
+                  <span id="erythrocyteSedimentationRate"></span>
+                </div>
+              </div>
+            </td>
+            <td colspan="2" class="align-top bg-light">
+              <div class="d-flex flex-column">
+                <div class="d-flex">
+                  <span class="fw-bold me-1">Общий анализ мочи:</span>
+                  <span id="generalUrineAnalysis"></span>
+                </div>
+                <span class="me-1">Отклонения:</span>
+                <span id="generalUrineAnalysisDeviations"></span>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="3" class="align-top bg-light">
+              <div class="d-flex flex-column">
+                <div class="d-flex">
+                  <span class="fw-bold me-1">Группа крови:</span>
+                  <span id="bloodType"></span>
+                </div>
+                <div class="d-flex">
+                  <span class="me-1">Резус фактор:</span>
+                  <span id="rhFactor"></span>
+                </div>
+              </div>
+            </td>
+            <td colspan="2" class="align-top bg-light">
+              <div class="d-flex flex-column">
+                <div class="d-flex">
+                  <span class="fw-bold me-1">Биохимические исследования:</span>
+                  <span id="biochemicalStudies"></span>
+                </div>
+                <div class="d-flex">
+                  <span class="me-1">Холестерин:</span>
+                  <span id="cholesterol"></span>
+                </div>
+                <div class="d-flex">
+                  <span class="me-1">Билирубин общий:</span>
+                  <span id="totalBilirubin"></span>
+                </div>
+                <div class="d-flex">
+                  <span class="me-1">Билирубин прямой:</span>
+                  <span id="directBilirubin"></span>
+                </div>
+                <div class="d-flex">
+                  <span class="me-1">Билирубин непрямой:</span>
+                  <span id="indirectBilirubin"></span>
+                </div>
+                <div class="d-flex">
+                  <span class="me-1">АЛТ:</span>
+                  <span id="alt"></span>
+                </div>
+                <div class="d-flex">
+                  <span class="me-1">АСТ:</span>
+                  <span id="ast"></span>
+                </div>
+                <div class="d-flex">
+                  <span class="me-1">Щелочная фосфатаза (ЩФ):</span>
+                  <span id="alkalinePhosphatase"></span>
+                </div>
+                <div class="d-flex">
+                  <span class="me-1">Гамма-глютамилтрансфераза (ГГТП):</span>
+                  <span id="gammaGlutamylTransferase"></span>
+                </div>
+                <div class="d-flex">
+                  <span class="me-1">Глюкоза сыворотки крови:</span>
+                  <span id="serumGlucose"></span>
+                </div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="3" class="align-top bg-light">
+              <div class="d-flex flex-column">
+                <div class="d-flex">
+                  <span class="fw-bold me-1">Фиброгастродуоденоскопия :</span>
+                  <span id="fibrogastroduodenoscopy"></span>
+                </div>
+              </div>
+            </td>
+            <td colspan="2" class="align-top bg-light">
+              <div class="d-flex flex-column">
+                <div class="d-flex">
+                  <span class="me-1 fw-bold">Ультразвуковое исследование органов брюшной полости:</span>
+                  <span id="ultrasoundExaminationOfTheAbdominalOrgans"></span>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+  <script src="/script/header.js" type="module"></script>
+  <script src="/script/poll-preview.js" type="module"></script>
+</body>
+
+</html>
