@@ -133,6 +133,32 @@ async function displayPollData() {
     document.getElementById("sleepDisturbance").innerText = clinicalPart.sleepDisturbance
     document.getElementById("fever").innerText = clinicalPart.fever
     
+    document.getElementById("download").addEventListener("click", async () => {
+        const request = await fetch(`${BASE_URL}/poll/download/${pollData.id}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "*/*",
+                "Authorization": `Bearer ${localStorage.getItem('token')}`
+            }
+        })
+    
+        if (request.ok) {
+            const blob = await request.blob(); // Получаем объект Blob из ответа
+            const url = window.URL.createObjectURL(blob); // Создаем URL для объекта Blob
+        
+            // Создаем ссылку для скачивания файла
+            const link = document.createElement("a");
+            link.href = url;
+            link.download = "poll_file.xlsx"; // Указываем имя файла
+            document.body.appendChild(link);
+            link.click();
+        
+            // Очищаем URL
+            window.URL.revokeObjectURL(url);
+        }
+    })
+
 }
 
 await displayPollData()
