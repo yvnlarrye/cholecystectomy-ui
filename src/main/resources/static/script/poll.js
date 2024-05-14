@@ -1,12 +1,20 @@
 import { getUserInfo } from "./utils.js"
 import { getAge } from "./utils.js"
 import { getPollIdFromUrl } from "./utils.js"
+import { getPatientById } from "./utils.js"
 
 const noAnswer = "Нет"
 const yesAnswer = "Да"
 const otherAnswer = "Другое"
 
 const patientInfo = await getUserInfo()
+
+const patient = await getPatientById(patientInfo.id)
+
+if (!patient.isPollAvailable) {
+    window.location.href = "/error"
+}
+
 
 const isDeadInput = document.getElementById("isDead")
 const deathDateInput = document.getElementById("deathDate")
@@ -367,8 +375,6 @@ async function updatePoll(id) {
         window.location.href = "/poll/complete"
     }
 }
-
-
 
 
 initPoll()

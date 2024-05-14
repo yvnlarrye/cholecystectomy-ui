@@ -112,6 +112,16 @@ async function displayPatientProfile(id) {
         doctorJob.innerText = "-"
     }
 
+
+    if (patient.isPollAvailable) {
+        document.getElementById("take-poll").innerHTML = `
+            <a href="/poll" class="text-decoration-none nav-link">
+                <button type="button" class="btn btn-success w-100" id="take-poll-btn">Пройти опрос</button>
+            </a>
+        `
+    }
+
+
     let doctorBtn = document.getElementById("doctor-btn")
     let pollsBtn = document.getElementById("polls-btn")
     let patientTabContent = document.getElementById("patient-tab-content")
@@ -216,15 +226,20 @@ async function displayAddPatientMenu(doctorId) {
     })
 }
 
-const userInfo = await getUserInfo()
 
-if (userInfo.role == ROLE_PATIENT) {
-    await displayPatientProfile(userInfo.id)
-} else if (userInfo.role == ROLE_DOCTOR) {
-    await displayDoctorProfile(userInfo.id)
+async function initProfile() {
+    const userInfo = await getUserInfo()
+
+    if (userInfo.role == ROLE_PATIENT) {
+        await displayPatientProfile(userInfo.id)
+    } else if (userInfo.role == ROLE_DOCTOR) {
+        await displayDoctorProfile(userInfo.id)
+    }
+    
+    document.getElementById("logout").addEventListener("click", () => {
+        localStorage.clear()
+        window.location.href = "/"
+    })
 }
 
-document.getElementById("logout").addEventListener("click", () => {
-    localStorage.clear()
-    window.location.href = "/"
-})
+await initProfile()

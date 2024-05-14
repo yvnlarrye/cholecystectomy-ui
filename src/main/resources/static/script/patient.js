@@ -28,8 +28,21 @@ async function unassignPatient(patientId) {
     throw new Error("Не удалось назначить врача")
 }
 
-async function assignQuiz() {
+async function allowPoll(patientId) {
+    const request = await fetch(`${BASE_URL}/doctor/allow-poll/${patientId}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "*/*",
+            "Authorization": `Bearer ${localStorage.getItem('token')}`
+        }
+    })
 
+    if (request.ok) {
+        return await request.json()
+    }
+
+    throw new Error("Не удалось дать доступ к опросу")
 }
 
 async function displayPatientInfo(patientId) {
@@ -46,6 +59,31 @@ async function displayPatientInfo(patientId) {
         await unassignPatient(patientId)
         window.location.href = "/profile"
     })
+
+    let allowPollBtn = document.getElementById("allow-poll-btn")
+    allowPollBtn.addEventListener("click", async () => {
+        await allowPoll(patientId)
+        allowPollBtn.disabled = true
+        allowPollBtn.innerText = "Назначен"
+    })
+
+}
+
+async function deletePoll(pollId) {
+    const request = await fetch(`${BASE_URL}/poll/${pollId}`, {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "*/*",
+            "Authorization": `Bearer ${localStorage.getItem('token')}`
+        }
+    })
+
+    if (request.ok) {
+        return await request.json()
+    }
+
+    throw new Error("Не удалось удалить опрос")
 }
 
 async function displayPolls(patientId) {
@@ -56,16 +94,36 @@ async function displayPolls(patientId) {
 
     patientPolls.polls.forEach(poll => {
         pollsOutput += `
-        <a href="/edit-poll/${poll.id}" class="text-decoration-none text-dark">
-            <div class="bg-light shadow-sm mb-3 border rounded-3">
-                <div class="p-3 d-flex align-items-center justify-content-center w-100 h-100" id="patients-section">
-                    <span class="fs-5">${fullDateFormat(poll.generalInformation.createdAt)}</span>
-                </div>
+        <div class="row mb-3 px-3">
+             <div class="col-9 bg-light shadow-sm border rounded-3">
+                <a href="/poll/${poll.id}" class="text-decoration-none text-dark">
+                    <div class="p-3 d-flex align-items-center justify-content-center w-100 h-100">
+                        <span class="fs-5">${fullDateFormat(poll.generalInformation.createdAt)}</span>
+                    </div>
+                </a>
             </div>
-        </a>
+            <div class="col-2 d-flex align-items-center">
+                <a href="/edit-poll/${poll.id}" class="text-decoration-none text-dark me-2">
+                    <button value="${poll.id}" type="button" class="btn btn-success update-poll-btn">
+                        <i class="bi bi-pencil-fill"></i>
+                    </button>
+                </a>
+                <button value="${poll.id}" type="button" class="btn btn-danger delete-poll-btn">
+                    <i class="bi bi-x-lg"></i>
+                </button>
+            </div>
+        </div>
+        
         `
     })
     patientTabContent.innerHTML = pollsOutput
+
+    document.querySelectorAll(".delete-poll-btn").forEach(btn => {
+        btn.addEventListener("click", async () => {
+            await deletePoll(btn.value)
+            window.location.reload()
+        })
+    })
 }
 
 
