@@ -69,6 +69,20 @@ export function shortDateFormat(inputDate) {
     const month = (date.getMonth() + 1).toString().padStart(2, '0');
     const year = date.getFullYear();
 
+    return `${day}-${month}-${year}`;
+}
+
+export function reversedShortDateFormat(inputDate) {
+    if(!inputDate) {
+        return null
+    }
+
+    const date = new Date(inputDate);
+    
+    const day = date.getDate().toString().padStart(2, '0');
+    const month = (date.getMonth() + 1).toString().padStart(2, '0');
+    const year = date.getFullYear();
+
     return `${year}-${month}-${day}`;
 }
 
@@ -143,4 +157,21 @@ export async function getDoctorPatients(doctorId) {
     }
 
     throw new Error("Не удалось получить данные врача")
+}
+
+export async function getPollById(pollId) {
+    const request = await fetch(`${BASE_URL}/poll/${pollId}`, {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "*/*",
+            "Authorization": `Bearer ${localStorage.getItem('token')}`
+        }
+    })
+
+    if (request.ok) {
+        return await request.json()
+    }
+
+    throw new Error("Не удалось получить данные опроса")
 }

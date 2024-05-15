@@ -29,32 +29,20 @@ async function getStatistic() {
 }
 
 async function displayStatisticTable() {
+    if(!localStorage.getItem("token")) {
+        return
+    }
     const data = await getStatistic()
     if (data) {
         await insertTable("statistic-table.html")
-        // document.getElementById('femalePatientsCount').textContent = data.femalePatientsCount;
-        // document.getElementById('femaleAvgAge').textContent = data.femaleAvgAge || '0';
-        // document.getElementById('femaleAvgHeight').textContent = data.femaleAvgHeight || '0';
-        // document.getElementById('femaleAvgWeight').textContent = data.femaleAvgWeight || '0';
-        // document.getElementById('femaleAvgBodyMassIndex').textContent = data.femaleAvgBodyMassIndex || '0';
-        // document.getElementById('femaleCountEmergencyCholelithiasisOrder').textContent = data.femaleCountEmergencyCholelithiasisOrder || '0';
-
-        // document.getElementById('malePatientsCount').textContent = data.malePatientsCount;
-        // document.getElementById('maleAvgAge').textContent = data.maleAvgAge || '0';
-        // document.getElementById('maleAvgHeight').textContent = data.maleAvgHeight || '0';
-        // document.getElementById('maleAvgWeight').textContent = data.maleAvgWeight || '0';
-        // document.getElementById('maleAvgBodyMassIndex').textContent = data.maleAvgBodyMassIndex || '0';
-        // document.getElementById('maleCountEmergencyCholelithiasisOrder').textContent = data.maleCountEmergencyCholelithiasisOrder || '0';
-
         for (var key in data) {
             if (data.hasOwnProperty(key)) {
               var element = document.getElementById(key);
               if (element) {
-                // Обновляем содержимое ячейки
                 element.textContent = data[key] || '0';
               }
             }
-          }
+        }
     }
 }
 

@@ -1,5 +1,5 @@
 import { BASE_URL } from "./utils.js"
-import { fullDateFormat } from "./utils.js"
+import { shortDateFormat } from "./utils.js"
 import { getUserInfo } from "./utils.js"
 import { getIdFromUrl } from "./utils.js"
 
@@ -30,13 +30,13 @@ async function displayPollData() {
     const pollData = await getPollData()
     const userInfo = await getUserInfo()
 
-    if (userInfo.id != pollData.patientId && userInfo.role != "ROLE_DOCTOR") {
+    if (userInfo.id != pollData.patientId && userInfo.role != "ROLE_DOCTOR" && userInfo.role != "ROLE_ADMIN") {
         window.location.href = "/error"
         return
     }
 
     document.getElementById("patientId").innerText = pollData.patientId
-    document.getElementById("createdAt").innerText = fullDateFormat(pollData.generalInformation.createdAt)
+    document.getElementById("createdAt").innerText = shortDateFormat(pollData.generalInformation.createdAt)
     document.getElementById("surname").innerText = pollData.surname
     document.getElementById("firstName").innerText = pollData.firstName
     document.getElementById("fatherName").innerText = pollData.fatherName
@@ -45,7 +45,7 @@ async function displayPollData() {
     let generalInformation = pollData.generalInformation
 
     document.getElementById("phoneNumber").innerText = generalInformation.phoneNumber
-    document.getElementById("birthDate").innerText = fullDateFormat(generalInformation.birthDate)
+    document.getElementById("birthDate").innerText = shortDateFormat(generalInformation.birthDate)
     document.getElementById("age").innerText = generalInformation.age
     document.getElementById("address").innerText = generalInformation.address
     let pregnancySection = document.getElementById("pregnancy")
@@ -69,7 +69,7 @@ async function displayPollData() {
     document.getElementById("height").innerText = generalInformation.height
     document.getElementById("weight").innerText = generalInformation.weight
     document.getElementById("bodyMassIndex").innerText = generalInformation.bodyMassIndex
-    document.getElementById("deathDate").innerText = generalInformation.deathDate
+    document.getElementById("deathDate").innerText = shortDateFormat(generalInformation.deathDate)
 
     let anamnesisOfLife = pollData.anamnesisOfLife
 
